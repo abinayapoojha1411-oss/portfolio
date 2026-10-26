@@ -61,6 +61,8 @@ export default function Contact() {
     }
   };
 
+  const [submittedUrl, setSubmittedUrl] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -71,22 +73,27 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    /* 
-      ======================================================================
-      BACKEND INTEGRATION NOTICE FOR ABINAYA:
-      ======================================================================
-      To connect your preferred backend service, replace this timeout with:
-      - Formspree: fetch("https://formspree.io/f/YOUR_FORM_ID", { method: "POST", body: JSON.stringify(formData) })
-      - EmailJS: emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData, "YOUR_PUBLIC_KEY")
-      - Supabase: supabase.from("enquiries").insert([formData])
-      - Web3Forms: fetch("https://api.web3forms.com/submit", { ... })
-      ======================================================================
-    */
+    // Format structured enquiry message for WhatsApp
+    const message =
+      `*New Project Enquiry — Abinaya Portfolio*\n\n` +
+      `👤 *Name:* ${formData.name.trim()}\n` +
+      `📧 *Email:* ${formData.email.trim()}\n` +
+      `🏢 *Business / Brand:* ${formData.business.trim()}\n` +
+      `💻 *Website Type:* ${formData.websiteType}\n\n` +
+      `📝 *Project Details:*\n${formData.details.trim()}`;
+
+    const whatsappUrl = `https://wa.me/918667696928?text=${encodeURIComponent(message)}`;
+    setSubmittedUrl(whatsappUrl);
+
+    // Automatically trigger WhatsApp in a new tab/app
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 800);
+    }, 400);
   };
+
 
   return (
     <section id="contact" className="py-24 md:py-36 bg-[#FAF9F6] border-b border-[#E8E5DD]">
@@ -218,27 +225,40 @@ export default function Contact() {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#141312] mb-3 tracking-tight">
-                    Enquiry Received
+                    Enquiry Sent via WhatsApp!
                   </h3>
-                  <p className="text-sm text-[#646059] max-w-md mx-auto mb-8 leading-relaxed font-light">
-                    Thank you, <strong className="text-[#141312]">{formData.name}</strong>. I will review your project requirements for <strong className="text-[#141312]">{formData.business}</strong> and get back to you at <strong className="text-[#141312]">{formData.email}</strong> shortly.
+                  <p className="text-sm text-[#646059] max-w-md mx-auto mb-6 leading-relaxed font-light">
+                    Thank you, <strong className="text-[#141312]">{formData.name}</strong>! Your project details have been formatted and sent directly to my WhatsApp (+91 86676 96928).
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSubmitted(false);
-                      setFormData({
-                        name: '',
-                        email: '',
-                        business: '',
-                        websiteType: 'Business Website',
-                        details: ''
-                      });
-                    }}
-                    className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] text-white hover:bg-[#C25E3E] transition-colors"
-                  >
-                    Send Another Enquiry
-                  </button>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    {submittedUrl && (
+                      <a
+                        href={submittedUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
+                      >
+                        <WhatsAppIcon className="w-4 h-4" />
+                        <span>Continue in WhatsApp</span>
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSubmitted(false);
+                        setFormData({
+                          name: '',
+                          email: '',
+                          business: '',
+                          websiteType: 'Business Website',
+                          details: ''
+                        });
+                      }}
+                      className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] text-white hover:bg-[#C25E3E] transition-colors"
+                    >
+                      Send Another Enquiry
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
