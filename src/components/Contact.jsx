@@ -8,7 +8,7 @@ import {
   Clock,
   ArrowUpRight
 } from 'lucide-react';
-import { LinkedInIcon, GitHubIcon, InstagramIcon, WhatsAppIcon } from './SocialIcons';
+import { LinkedInIcon, GitHubIcon, WhatsAppIcon } from './SocialIcons';
 
 
 export default function Contact() {

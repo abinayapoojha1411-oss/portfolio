@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
-import { LinkedInIcon, GitHubIcon, InstagramIcon, WhatsAppIcon } from './SocialIcons';
+import { LinkedInIcon, GitHubIcon, WhatsAppIcon } from './SocialIcons';
+
 
 export default function Footer() {
   const scrollToTop = () => {
