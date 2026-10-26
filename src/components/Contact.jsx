@@ -135,7 +135,7 @@ export default function Contact() {
 
                 {/* Email Option */}
                 <a
-                  href="mailto:abinaya.developer@gmail.com"
+                  href="mailto:abinayapoojha1411@gmail.com"
                   className="group flex items-center justify-between p-4 rounded-xl bg-[#FFFFFF] border border-[#E8E5DD] hover:border-[#C25E3E] transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-[#141312]">Email Me</div>
-                      <div className="text-xs text-[#646059]">abinaya.developer@gmail.com</div>
+                      <div className="text-xs text-[#646059]">abinayapoojha1411@gmail.com</div>
                     </div>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-[#8F8B83] group-hover:text-[#C25E3E] transition-colors" />
