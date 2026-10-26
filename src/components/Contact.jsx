@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  Mail, 
-  Send, 
-  MessageSquare, 
-  CheckCircle2, 
-  AlertCircle, 
-  Clock, 
-  ArrowUpRight 
+import {
+  Mail,
+  Send,
+  MessageSquare,
+  CheckCircle2,
+  AlertCircle,
+  Clock,
+  ArrowUpRight
 } from 'lucide-react';
 import { LinkedInIcon, GitHubIcon, InstagramIcon, WhatsAppIcon } from './SocialIcons';
 
@@ -17,7 +17,6 @@ export default function Contact() {
     email: '',
     business: '',
     websiteType: 'Business Website',
-    budget: '₹25,000 – ₹50,000',
     details: ''
   });
 
@@ -30,18 +29,10 @@ export default function Contact() {
     'Landing Page',
     'Portfolio Website',
     'E-commerce Website',
-    'Website Redesign',
-    'Custom Web Application',
+    'Resume',
     'Other'
   ];
 
-  const budgetRanges = [
-    'Under ₹10,000',
-    '₹10,000 – ₹25,000',
-    '₹25,000 – ₹50,000',
-    '₹50,000+',
-    'Not sure yet'
-  ];
 
   const validate = () => {
     const errs = {};
@@ -101,7 +92,7 @@ export default function Contact() {
     <section id="contact" className="py-24 md:py-36 bg-[#FAF9F6] border-b border-[#E8E5DD]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          
+
           {/* Left Column (5 cols): Context & Direct Contact Options */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
@@ -161,18 +152,18 @@ export default function Contact() {
 
                 {/* WhatsApp Option */}
                 <a
-                  href="https://wa.me/"
+                  href="https://wa.me/918667696928"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-between p-4 rounded-xl bg-[#FFFFFF] border border-[#E8E5DD] hover:border-[#C25E3E] transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-[#FAF9F6] border border-[#E8E5DD] flex items-center justify-center text-[#141312] group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                      <MessageSquare className="w-4 h-4" />
+                      <WhatsAppIcon className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="text-xs font-bold text-[#141312]">WhatsApp</div>
-                      <div className="text-xs text-[#646059]">Direct Chat for Fast Responses</div>
+                      <div className="text-xs text-[#646059]">+91 86676 96928</div>
                     </div>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-[#8F8B83] group-hover:text-[#C25E3E] transition-colors" />
@@ -196,7 +187,7 @@ export default function Contact() {
                   <LinkedInIcon className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/abinayapoojha1411-oss"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-white border border-[#E8E5DD] hover:border-[#141312] hover:bg-[#141312] hover:text-white flex items-center justify-center text-[#646059] transition-all duration-300"
@@ -220,7 +211,7 @@ export default function Contact() {
           {/* Right Column (7 cols): The Contact Form */}
           <div className="lg:col-span-7">
             <div className="bg-[#FFFFFF] rounded-3xl p-8 sm:p-10 lg:p-12 border border-[#E8E5DD] shadow-sm">
-              
+
               {submitted ? (
                 <div className="py-12 text-center animate-fadeIn">
                   <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6 border border-emerald-200">
@@ -241,7 +232,6 @@ export default function Contact() {
                         email: '',
                         business: '',
                         websiteType: 'Business Website',
-                        budget: '₹25,000 – ₹50,000',
                         details: ''
                       });
                     }}
@@ -252,7 +242,7 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
-                  
+
                   {/* Name and Email Row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
@@ -266,9 +256,8 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. Priya Sharma"
-                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border text-sm text-[#141312] placeholder-[#8F8B83] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${
-                          errors.name ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] focus:border-[#C25E3E]'
-                        }`}
+                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border text-sm text-[#141312] placeholder-[#8F8B83] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.name ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] focus:border-[#C25E3E]'
+                          }`}
                       />
                       {errors.name && (
                         <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
@@ -288,9 +277,8 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="priya@company.com"
-                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border text-sm text-[#141312] placeholder-[#8F8B83] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${
-                          errors.email ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] focus:border-[#C25E3E]'
-                        }`}
+                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border text-sm text-[#141312] placeholder-[#8F8B83] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.email ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] focus:border-[#C25E3E]'
+                          }`}
                       />
                       {errors.email && (
                         <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
@@ -312,9 +300,8 @@ export default function Contact() {
                       value={formData.business}
                       onChange={handleChange}
                       placeholder="e.g. Studio Vista Architecture"
-                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border text-sm text-[#141312] placeholder-[#8F8B83] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${
-                        errors.business ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] focus:border-[#C25E3E]'
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border text-sm text-[#141312] placeholder-[#8F8B83] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.business ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] focus:border-[#C25E3E]'
+                        }`}
                     />
                     {errors.business && (
                       <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
@@ -323,45 +310,24 @@ export default function Contact() {
                     )}
                   </div>
 
-                  {/* Website Type & Budget Selectors */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="websiteType" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#141312] mb-2">
-                        Website Type
-                      </label>
-                      <select
-                        id="websiteType"
-                        name="websiteType"
-                        value={formData.websiteType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border border-[#E8E5DD] text-sm text-[#141312] focus:outline-none focus:border-[#C25E3E] focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors"
-                      >
-                        {websiteTypes.map((type) => (
-                          <option key={type} value={type}>
-                            {type}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="budget" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#141312] mb-2">
-                        Budget Range
-                      </label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border border-[#E8E5DD] text-sm text-[#141312] focus:outline-none focus:border-[#C25E3E] focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors"
-                      >
-                        {budgetRanges.map((range) => (
-                          <option key={range} value={range}>
-                            {range}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                  {/* Website Type Selector */}
+                  <div>
+                    <label htmlFor="websiteType" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#141312] mb-2">
+                      Website Type
+                    </label>
+                    <select
+                      id="websiteType"
+                      name="websiteType"
+                      value={formData.websiteType}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border border-[#E8E5DD] text-sm text-[#141312] focus:outline-none focus:border-[#C25E3E] focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors"
+                    >
+                      {websiteTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   {/* Project Details */}
@@ -376,9 +342,8 @@ export default function Contact() {
                       value={formData.details}
                       onChange={handleChange}
                       placeholder="Tell me briefly about what you are looking to build, any inspirations, or target completion dates..."
-                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border text-sm text-[#141312] placeholder-[#8F8B83] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${
-                        errors.details ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] focus:border-[#C25E3E]'
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] border text-sm text-[#141312] placeholder-[#8F8B83] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.details ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] focus:border-[#C25E3E]'
+                        }`}
                     />
                     {errors.details && (
                       <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">

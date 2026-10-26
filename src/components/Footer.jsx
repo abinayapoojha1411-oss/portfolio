@@ -35,10 +35,10 @@ export default function Footer() {
   return (
     <footer className="bg-[#FAF9F6] border-t border-[#E8E5DD] pt-20 pb-12 text-[#141312]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
-        
+
         {/* Main Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#E8E5DD]">
-          
+
           {/* Brand & Positioning (6 cols) */}
           <div className="md:col-span-6 flex flex-col justify-between">
             <div>
@@ -101,7 +101,7 @@ export default function Footer() {
                   <LinkedInIcon className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/abinayapoojha1411-oss"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-white border border-[#E8E5DD] hover:border-[#141312] hover:bg-[#141312] hover:text-white flex items-center justify-center text-[#646059] transition-all duration-300"
@@ -110,23 +110,14 @@ export default function Footer() {
                 >
                   <GitHubIcon className="w-4 h-4" />
                 </a>
+
                 <a
-                  href="https://instagram.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-white border border-[#E8E5DD] hover:border-[#141312] hover:bg-[#141312] hover:text-white flex items-center justify-center text-[#646059] transition-all duration-300"
-                  aria-label="Instagram Profile"
-                  title="Instagram"
-                >
-                  <InstagramIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://wa.me/"
+                  href="https://wa.me/918667696928"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-white border border-[#E8E5DD] hover:border-emerald-600 hover:bg-emerald-600 hover:text-white flex items-center justify-center text-[#646059] transition-all duration-300"
-                  aria-label="WhatsApp Chat"
-                  title="WhatsApp"
+                  aria-label="WhatsApp Chat (+91 86676 96928)"
+                  title="WhatsApp: +91 86676 96928"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                 </a>
