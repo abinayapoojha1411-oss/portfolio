@@ -12,7 +12,7 @@ export default function Projects() {
     : projects.filter(p => p.category.toLowerCase().includes(filter.toLowerCase()) || filter.toLowerCase().includes(p.category.toLowerCase()));
 
   return (
-    <section id="work" className="py-24 md:py-36 bg-[#FFFFFF] border-b border-[#E8E5DD]">
+    <section id="work" className="py-24 md:py-36 bg-[#FFFFFF] dark:bg-[#141312] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
         
         {/* Section Header */}
@@ -24,10 +24,10 @@ export default function Projects() {
                 SELECTED WORK
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] leading-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-tight mb-3 transition-colors">
               A few things I&apos;ve built.
             </h2>
-            <p className="text-lg text-[#646059] font-light max-w-xl">
+            <p className="text-lg text-[#646059] dark:text-[#A6A196] font-light max-w-xl transition-colors">
               Business-focused websites designed across different industries.
             </p>
           </div>
@@ -41,8 +41,8 @@ export default function Projects() {
                 onClick={() => setFilter(cat)}
                 className={`text-xs px-3.5 py-1.5 rounded-full font-medium transition-all duration-300 ${
                   filter === cat
-                    ? 'bg-[#141312] text-white shadow-sm'
-                    : 'bg-[#F4F1EA] text-[#646059] hover:text-[#141312] hover:bg-[#E8E5DD]'
+                    ? 'bg-[#141312] dark:bg-[#F7F5F0] text-white dark:text-[#141312] shadow-sm'
+                    : 'bg-[#F4F1EA] dark:bg-[#1A1917] text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0] hover:bg-[#E8E5DD] dark:hover:bg-[#252320]'
                 }`}
               >
                 {cat}
@@ -56,29 +56,29 @@ export default function Projects() {
           
           {/* Project 1: Featured Large Horizontal Showcase (Haven Interiors) */}
           {filteredProjects.find(p => p.id === 'haven-interiors') && (
-            <div className="group relative bg-[#FAF9F6] rounded-3xl border border-[#E8E5DD] hover:border-[#C25E3E]/60 p-6 sm:p-8 lg:p-10 transition-all duration-500 hover:shadow-[0_24px_50px_-12px_rgba(20,19,18,0.1)] hover:-translate-y-1">
+            <div className="group relative bg-[#FAF9F6] dark:bg-[#171614] rounded-3xl border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E]/60 transition-all duration-500 hover:shadow-[0_24px_50px_-12px_rgba(20,19,18,0.1)] dark:hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.6)] p-6 sm:p-8 lg:p-10 hover:-translate-y-1">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
                 {/* Visual Browser Mockup (Left 7 cols on desktop) */}
                 <div className="lg:col-span-7 order-2 lg:order-1">
-                  <div className="rounded-2xl overflow-hidden border border-[#E8E5DD] bg-white shadow-md transition-all duration-500 group-hover:shadow-xl">
+                  <div className="rounded-2xl overflow-hidden border border-[#E8E5DD] dark:border-[#2E2C28] bg-white dark:bg-[#1A1917] shadow-md transition-all duration-500 group-hover:shadow-xl">
                     
                     {/* Browser Chrome Header */}
-                    <div className="bg-[#FFFFFF] border-b border-[#E8E5DD] px-4 py-3 flex items-center justify-between">
+                    <div className="bg-[#FFFFFF] dark:bg-[#121110] border-b border-[#E8E5DD] dark:border-[#2E2C28] px-4 py-3 flex items-center justify-between transition-colors">
                       <div className="flex items-center gap-1.5">
                         <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
                         <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
                         <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
                       </div>
-                      <div className="flex items-center gap-1.5 px-3 py-1 bg-[#FAF9F6] border border-[#E8E5DD] rounded-full text-[10px] sm:text-xs text-[#646059] font-mono">
+                      <div className="flex items-center gap-1.5 px-3 py-1 bg-[#FAF9F6] dark:bg-[#1C1B18] border border-[#E8E5DD] dark:border-[#2E2C28] rounded-full text-[10px] sm:text-xs text-[#646059] dark:text-[#A6A196] font-mono">
                         <Lock className="w-3 h-3 text-emerald-600" />
                         <span>interiordesign-swart.vercel.app</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#8F8B83]">LIVE</span>
+                      <span className="text-[10px] font-mono text-[#8F8B83] dark:text-[#7A756B]">LIVE</span>
                     </div>
 
                     {/* Screenshot Preview */}
-                    <div className="relative aspect-[16/10] overflow-hidden bg-neutral-100">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-neutral-100 dark:bg-neutral-900">
                       <img
                         src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85"
                         alt="Haven Interiors - Luxury interior design studio website"
@@ -106,54 +106,54 @@ export default function Projects() {
                   <div>
                     {/* Top Badges */}
                     <div className="flex flex-wrap items-center gap-2 mb-4">
-                      <span className="px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E8E5DD] text-[10px] font-mono font-bold tracking-wider text-[#C25E3E] uppercase">
+                      <span className="px-3 py-1 rounded-full bg-[#FFFFFF] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] text-[10px] font-mono font-bold tracking-wider text-[#C25E3E] uppercase">
                         PORTFOLIO PROJECT
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-[#F4F1EA] text-[11px] font-medium text-[#646059] group-hover:text-[#141312] transition-colors">
+                      <span className="px-3 py-1 rounded-full bg-[#F4F1EA] dark:bg-[#1A1917] text-[11px] font-medium text-[#646059] dark:text-[#A6A196] group-hover:text-[#141312] dark:group-hover:text-[#F7F5F0] transition-colors">
                         Interior Design
                       </span>
                     </div>
 
                     {/* Project Title */}
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#141312] mb-3 group-hover:text-[#C25E3E] transition-colors">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] mb-3 group-hover:text-[#C25E3E] transition-colors">
                       Haven Interiors
                     </h3>
 
-                    <p className="text-xs sm:text-sm font-medium text-[#8F8B83] font-serif italic mb-4">
+                    <p className="text-xs sm:text-sm font-medium text-[#8F8B83] dark:text-[#7A756B] font-serif italic mb-4">
                       Designing Spaces That Feel Like Home • Pune & Mumbai
                     </p>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base text-[#646059] leading-relaxed mb-6 font-normal">
+                    <p className="text-sm sm:text-base text-[#646059] dark:text-[#A6A196] leading-relaxed mb-6 font-normal">
                       A premium interior design website created to showcase residential projects, design services and the studio&apos;s visual identity.
                     </p>
 
                     {/* Highlights */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
-                      <div className="text-xs text-[#646059] flex items-center gap-2">
+                      <div className="text-xs text-[#646059] dark:text-[#A6A196] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C25E3E]" />
                         <span>Bespoke Project Showcase</span>
                       </div>
-                      <div className="text-xs text-[#646059] flex items-center gap-2">
+                      <div className="text-xs text-[#646059] dark:text-[#A6A196] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C25E3E]" />
                         <span>Consultation Booking Funnel</span>
                       </div>
-                      <div className="text-xs text-[#646059] flex items-center gap-2">
+                      <div className="text-xs text-[#646059] dark:text-[#A6A196] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C25E3E]" />
                         <span>Editorial Typography</span>
                       </div>
-                      <div className="text-xs text-[#646059] flex items-center gap-2">
+                      <div className="text-xs text-[#646059] dark:text-[#A6A196] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C25E3E]" />
                         <span>Zero Layout Shifts</span>
                       </div>
                     </div>
 
                     {/* Technology Stack */}
-                    <div className="pt-4 border-t border-[#E8E5DD] mb-6">
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#8F8B83] block mb-2">
+                    <div className="pt-4 border-t border-[#E8E5DD] dark:border-[#2E2C28] mb-6">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#8F8B83] dark:text-[#7A756B] block mb-2">
                         Technology
                       </span>
-                      <div className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#141312] bg-[#FFFFFF] px-3 py-1.5 rounded-lg border border-[#E8E5DD]">
+                      <div className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#141312] dark:text-[#F7F5F0] bg-[#FFFFFF] dark:bg-[#1E1D1B] px-3 py-1.5 rounded-lg border border-[#E8E5DD] dark:border-[#2E2C28]">
                         React • JavaScript • CSS
                       </div>
                     </div>
@@ -165,7 +165,7 @@ export default function Projects() {
                       href="https://interiordesign-swart.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/btn inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] text-[#FAF9F6] hover:bg-[#C25E3E] transition-all duration-300 shadow-sm"
+                      className="group/btn inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-sm"
                     >
                       <span>View Live Website</span>
                       <ExternalLink className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -184,28 +184,28 @@ export default function Projects() {
               .map((project) => (
                 <div
                   key={project.id}
-                  className="group flex flex-col justify-between bg-[#FAF9F6] rounded-3xl border border-[#E8E5DD] hover:border-[#C25E3E]/60 p-6 sm:p-7 transition-all duration-500 hover:shadow-[0_20px_45px_-10px_rgba(20,19,18,0.1)] hover:-translate-y-1.5"
+                  className="group flex flex-col justify-between bg-[#FAF9F6] dark:bg-[#171614] rounded-3xl border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E]/60 p-6 sm:p-7 transition-all duration-500 hover:shadow-[0_20px_45px_-10px_rgba(20,19,18,0.1)] dark:hover:shadow-[0_20px_45px_-10px_rgba(0,0,0,0.6)] hover:-translate-y-1.5"
                 >
                   <div>
                     {/* Browser Mockup Frame */}
-                    <div className="rounded-2xl overflow-hidden border border-[#E8E5DD] bg-white shadow-sm transition-all duration-500 group-hover:shadow-md mb-6">
+                    <div className="rounded-2xl overflow-hidden border border-[#E8E5DD] dark:border-[#2E2C28] bg-white dark:bg-[#1A1917] shadow-sm transition-all duration-500 group-hover:shadow-md mb-6">
                       
                       {/* Window Header */}
-                      <div className="bg-[#FFFFFF] border-b border-[#E8E5DD] px-3.5 py-2.5 flex items-center justify-between">
+                      <div className="bg-[#FFFFFF] dark:bg-[#121110] border-b border-[#E8E5DD] dark:border-[#2E2C28] px-3.5 py-2.5 flex items-center justify-between transition-colors">
                         <div className="flex items-center gap-1.5">
                           <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
                           <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
                           <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
                         </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-0.5 bg-[#FAF9F6] border border-[#E8E5DD] rounded-full text-[10px] text-[#646059] font-mono truncate max-w-[190px]">
+                        <div className="flex items-center gap-1.5 px-2.5 py-0.5 bg-[#FAF9F6] dark:bg-[#1C1B18] border border-[#E8E5DD] dark:border-[#2E2C28] rounded-full text-[10px] text-[#646059] dark:text-[#A6A196] font-mono truncate max-w-[190px]">
                           <Lock className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
                           <span className="truncate">{project.url.replace('https://', '')}</span>
                         </div>
-                        <span className="text-[9px] font-mono text-[#8F8B83]">VERCEL</span>
+                        <span className="text-[9px] font-mono text-[#8F8B83] dark:text-[#7A756B]">VERCEL</span>
                       </div>
 
                       {/* Image Preview */}
-                      <div className="relative aspect-[16/10] overflow-hidden bg-neutral-100">
+                      <div className="relative aspect-[16/10] overflow-hidden bg-neutral-100 dark:bg-neutral-900">
                         <img
                           src={project.image}
                           alt={`${project.name} - ${project.category}`}
@@ -229,32 +229,32 @@ export default function Projects() {
 
                     {/* Metadata Badges */}
                     <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#FFFFFF] border border-[#E8E5DD] text-[10px] font-mono font-bold tracking-wider text-[#C25E3E] uppercase">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#FFFFFF] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] text-[10px] font-mono font-bold tracking-wider text-[#C25E3E] uppercase">
                         PORTFOLIO PROJECT
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#F4F1EA] text-[10px] font-medium text-[#646059] group-hover:text-[#141312] transition-colors">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#F4F1EA] dark:bg-[#1A1917] text-[10px] font-medium text-[#646059] dark:text-[#A6A196] group-hover:text-[#141312] dark:group-hover:text-[#F7F5F0] transition-colors">
                         {project.category}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#141312] mb-1 group-hover:text-[#C25E3E] transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] mb-1 group-hover:text-[#C25E3E] transition-colors">
                       {project.name}
                     </h3>
 
-                    <p className="text-xs font-serif italic text-[#8F8B83] mb-3">
+                    <p className="text-xs font-serif italic text-[#8F8B83] dark:text-[#7A756B] mb-3">
                       {project.headline}
                     </p>
 
                     {/* Description */}
-                    <p className="text-sm text-[#646059] leading-relaxed mb-6 font-normal">
+                    <p className="text-sm text-[#646059] dark:text-[#A6A196] leading-relaxed mb-6 font-normal">
                       {project.description}
                     </p>
 
                     {/* Technology */}
-                    <div className="pb-4 mb-4 border-b border-[#E8E5DD] flex items-center justify-between text-xs font-mono text-[#646059]">
-                      <span className="text-[10px] uppercase text-[#8F8B83] font-sans">Technology:</span>
-                      <span className="bg-white px-2.5 py-1 rounded border border-[#E8E5DD]">
+                    <div className="pb-4 mb-4 border-b border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-between text-xs font-mono text-[#646059] dark:text-[#A6A196]">
+                      <span className="text-[10px] uppercase text-[#8F8B83] dark:text-[#7A756B] font-sans">Technology:</span>
+                      <span className="bg-white dark:bg-[#1E1D1B] px-2.5 py-1 rounded border border-[#E8E5DD] dark:border-[#2E2C28] text-[#141312] dark:text-[#F7F5F0]">
                         React • JavaScript • CSS
                       </span>
                     </div>
@@ -266,7 +266,7 @@ export default function Projects() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center justify-between w-full px-5 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#FFFFFF] text-[#141312] hover:bg-[#141312] hover:text-[#FAF9F6] border border-[#E8E5DD] hover:border-[#141312] transition-all duration-300"
+                      className="group/link inline-flex items-center justify-between w-full px-5 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#FFFFFF] dark:bg-[#1E1D1B] text-[#141312] dark:text-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-[#FAF9F6] dark:hover:text-[#141312] border border-[#E8E5DD] dark:border-[#2E2C28] transition-all duration-300"
                     >
                       <span>View Live Website</span>
                       <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
@@ -286,7 +286,7 @@ export default function Projects() {
               e.preventDefault();
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#F4F1EA] text-[#141312] hover:bg-[#E8E5DD] border border-[#E8E5DD] transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#F4F1EA] dark:bg-[#1A1917] text-[#141312] dark:text-[#F7F5F0] hover:bg-[#E8E5DD] dark:hover:bg-[#252320] border border-[#E8E5DD] dark:border-[#2E2C28] transition-all duration-300"
           >
             <span>Have a Project in Mind? Let&apos;s Build It →</span>
           </a>

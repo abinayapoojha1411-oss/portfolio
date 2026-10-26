@@ -24,7 +24,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-[#FAF9F6] border-b border-[#E8E5DD]">
+    <section id="about" className="py-24 md:py-32 bg-[#FAF9F6] dark:bg-[#0F0E0D] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -37,23 +37,23 @@ export default function About() {
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] leading-[1.15] mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-[1.15] mb-6 transition-colors">
               I care about how a website feels —{' '}
               <span className="font-serif italic font-normal text-[#C25E3E]">
                 and what it achieves.
               </span>
             </h2>
 
-            <div className="space-y-4 text-base sm:text-lg text-[#646059] leading-relaxed font-light">
+            <div className="space-y-4 text-base sm:text-lg text-[#646059] dark:text-[#A6A196] leading-relaxed font-light transition-colors">
               <p>
-                I&apos;m <strong className="text-[#141312] font-semibold">Abinaya</strong>, a freelance web designer and developer focused on creating modern digital experiences for businesses and professionals.
+                I&apos;m <strong className="text-[#141312] dark:text-[#F7F5F0] font-semibold">Abinaya</strong>, a freelance web designer and developer focused on creating modern digital experiences for businesses and professionals.
               </p>
               <p>
                 I enjoy turning ideas into clean, responsive and visually engaging websites that are easy to use and built around a clear purpose.
               </p>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-[#E8E5DD] flex items-center gap-6 text-xs text-[#646059]">
+            <div className="mt-8 pt-8 border-t border-[#E8E5DD] dark:border-[#2E2C28] flex items-center gap-6 text-xs text-[#646059] dark:text-[#A6A196] transition-colors">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#C25E3E]" />
                 <span>Freelance Partner</span>
@@ -76,23 +76,23 @@ export default function About() {
               return (
                 <div
                   key={idx}
-                  className="group bg-[#FFFFFF] rounded-2xl p-6 sm:p-8 border border-[#E8E5DD] hover:border-[#C25E3E]/60 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                  className="group bg-[#FFFFFF] dark:bg-[#171614] rounded-2xl p-6 sm:p-8 border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E]/60 dark:hover:border-[#C25E3E]/60 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-xl bg-[#FAF9F6] border border-[#E8E5DD] flex items-center justify-center text-[#141312] group-hover:bg-[#C25E3E] group-hover:text-white group-hover:border-[#C25E3E] transition-all duration-300 shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#141312] dark:text-[#F7F5F0] group-hover:bg-[#C25E3E] group-hover:text-white group-hover:border-[#C25E3E] transition-all duration-300 shrink-0">
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#C25E3E] mb-1">
                         Pillar 0{idx + 1}
                       </div>
-                      <h3 className="text-xl font-bold text-[#141312] mb-1 tracking-tight">
+                      <h3 className="text-xl font-bold text-[#141312] dark:text-[#F7F5F0] mb-1 tracking-tight transition-colors">
                         {item.title}
                       </h3>
-                      <p className="text-sm font-semibold text-[#141312] mb-2">
+                      <p className="text-sm font-semibold text-[#141312] dark:text-[#E8E5DD] mb-2 transition-colors">
                         {item.description}
                       </p>
-                      <p className="text-xs sm:text-sm text-[#646059] leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#646059] dark:text-[#A6A196] leading-relaxed transition-colors">
                         {item.details}
                       </p>
                     </div>

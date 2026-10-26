@@ -3,7 +3,7 @@ import { skillGroups } from '../data/skillsData';
 
 export default function Skills() {
   return (
-    <section className="py-24 md:py-32 bg-[#FFFFFF] border-b border-[#E8E5DD]">
+    <section className="py-24 md:py-32 bg-[#FFFFFF] dark:bg-[#141312] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
         
         {/* Section Header */}
@@ -14,10 +14,10 @@ export default function Skills() {
               TECHNICAL FOUNDATIONS
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-tight mb-4 transition-colors">
             Tools I Work With
           </h2>
-          <p className="text-lg text-[#646059] font-light">
+          <p className="text-lg text-[#646059] dark:text-[#A6A196] font-light transition-colors">
             A practical, modern toolset chosen for reliability, high responsiveness, and clean code standards.
           </p>
         </div>
@@ -27,15 +27,15 @@ export default function Skills() {
           {skillGroups.map((group) => (
             <div
               key={group.category}
-              className="bg-[#FAF9F6] rounded-2xl p-6 sm:p-7 border border-[#E8E5DD] flex flex-col justify-between"
+              className="bg-[#FAF9F6] dark:bg-[#1A1917] rounded-2xl p-6 sm:p-7 border border-[#E8E5DD] dark:border-[#2E2C28] flex flex-col justify-between transition-colors"
             >
               <div>
                 {/* Category Header */}
-                <div className="pb-4 mb-5 border-b border-[#E8E5DD]">
-                  <h3 className="text-lg font-bold text-[#141312] tracking-tight mb-1">
+                <div className="pb-4 mb-5 border-b border-[#E8E5DD] dark:border-[#2E2C28]">
+                  <h3 className="text-lg font-bold text-[#141312] dark:text-[#F7F5F0] tracking-tight mb-1 transition-colors">
                     {group.category}
                   </h3>
-                  <p className="text-xs text-[#8F8B83] leading-relaxed">
+                  <p className="text-xs text-[#8F8B83] dark:text-[#7A756C] leading-relaxed">
                     {group.description}
                   </p>
                 </div>
@@ -45,15 +45,15 @@ export default function Skills() {
                   {group.skills.map((skill) => (
                     <div
                       key={skill.name}
-                      className="group/skill bg-white rounded-xl p-3 border border-[#E8E5DD] hover:border-[#C25E3E]/50 transition-all duration-200"
+                      className="group/skill bg-white dark:bg-[#23221F] rounded-xl p-3 border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E]/50 dark:hover:border-[#C25E3E]/50 transition-all duration-200"
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-bold text-[#141312] group-hover/skill:text-[#C25E3E] transition-colors">
+                        <span className="text-sm font-bold text-[#141312] dark:text-[#F7F5F0] group-hover/skill:text-[#C25E3E] transition-colors">
                           {skill.name}
                         </span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#E8E5DD] group-hover/skill:bg-[#C25E3E] transition-colors" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#E8E5DD] dark:bg-[#3A3834] group-hover/skill:bg-[#C25E3E] transition-colors" />
                       </div>
-                      <p className="text-[11px] text-[#646059] font-light">
+                      <p className="text-[11px] text-[#646059] dark:text-[#A6A196] font-light transition-colors">
                         {skill.note}
                       </p>
                     </div>
@@ -61,9 +61,9 @@ export default function Skills() {
                 </div>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-[#E8E5DD]/60 flex items-center justify-between text-[11px] font-mono text-[#8F8B83]">
+              <div className="pt-6 mt-6 border-t border-[#E8E5DD]/60 dark:border-[#2E2C28]/60 flex items-center justify-between text-[11px] font-mono text-[#8F8B83] dark:text-[#7A756C]">
                 <span>Status</span>
-                <span className="text-emerald-700 font-medium">Active In Production</span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-medium">Active In Production</span>
               </div>
             </div>
           ))}

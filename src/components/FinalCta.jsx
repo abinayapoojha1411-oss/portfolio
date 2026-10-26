@@ -17,7 +17,7 @@ export default function FinalCta() {
   };
 
   return (
-    <section className="py-28 md:py-40 bg-[#141312] text-[#FAF9F6] relative overflow-hidden">
+    <section className="py-28 md:py-40 bg-[#141312] dark:bg-[#0A0A09] text-[#FAF9F6] relative overflow-hidden border-t dark:border-[#2E2C28] transition-colors duration-300">
       {/* Background radial gradient accent */}
       <div 
         className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-[#C25E3E]/20 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" 

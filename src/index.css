@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -28,6 +30,12 @@ body {
   background-color: #FAF9F6;
   color: #141312;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #0F0E0D;
+  color: #F7F5F0;
 }
 
 /* Subtle elegant scrollbar */
@@ -37,12 +45,21 @@ body {
 ::-webkit-scrollbar-track {
   background: #FAF9F6;
 }
+html.dark ::-webkit-scrollbar-track {
+  background: #0F0E0D;
+}
 ::-webkit-scrollbar-thumb {
   background: #D8D4CA;
   border-radius: 4px;
 }
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2E2C28;
+}
 ::-webkit-scrollbar-thumb:hover {
   background: #B8B3A8;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #45423C;
 }
 
 /* Gentle floating animation for mockups */

@@ -2,7 +2,6 @@ import React from 'react';
 import { ArrowUp } from 'lucide-react';
 import { LinkedInIcon, GitHubIcon, WhatsAppIcon } from './SocialIcons';
 
-
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({
@@ -34,39 +33,39 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#FAF9F6] border-t border-[#E8E5DD] pt-20 pb-12 text-[#141312]">
+    <footer className="bg-[#FAF9F6] dark:bg-[#0F0E0D] border-t border-[#E8E5DD] dark:border-[#2E2C28] pt-20 pb-12 text-[#141312] dark:text-[#F7F5F0] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
 
         {/* Main Footer Row */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#E8E5DD]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#E8E5DD] dark:border-[#2E2C28]">
 
           {/* Brand & Positioning (6 cols) */}
           <div className="md:col-span-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-1.5 mb-2">
-                <span className="text-2xl font-bold tracking-tight text-[#141312]">
+                <span className="text-2xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0]">
                   ABINAYA
                 </span>
                 <span className="w-2 h-2 rounded-full bg-[#C25E3E] inline-block" />
               </div>
 
-              <div className="text-xs font-mono font-medium tracking-wider text-[#646059] uppercase mb-4">
+              <div className="text-xs font-mono font-medium tracking-wider text-[#646059] dark:text-[#A6A196] uppercase mb-4">
                 Freelance Web Designer &amp; Developer
               </div>
 
-              <p className="text-sm text-[#646059] max-w-md leading-relaxed font-light mb-6">
+              <p className="text-sm text-[#646059] dark:text-[#A6A196] max-w-md leading-relaxed font-light mb-6">
                 Building modern digital experiences for ambitious businesses.
               </p>
             </div>
 
-            <div className="text-xs text-[#8F8B83]">
+            <div className="text-xs text-[#8F8B83] dark:text-[#7A756C]">
               Based in India • Working with clients globally
             </div>
           </div>
 
           {/* Quick Navigation (3 cols) */}
           <div className="md:col-span-3">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141312] block mb-4">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] block mb-4">
               Navigation
             </span>
             <ul className="space-y-3">
@@ -75,7 +74,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-sm text-[#646059] hover:text-[#C25E3E] transition-colors"
+                    className="text-sm text-[#646059] dark:text-[#A6A196] hover:text-[#C25E3E] dark:hover:text-[#C25E3E] transition-colors"
                   >
                     {link.name}
                   </a>
@@ -87,7 +86,7 @@ export default function Footer() {
           {/* Social Profiles & Back to Top (3 cols) */}
           <div className="md:col-span-3 flex flex-col justify-between">
             <div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141312] block mb-4">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] block mb-4">
                 Connect
               </span>
               <div className="flex items-center gap-2.5 mb-6">
@@ -95,7 +94,7 @@ export default function Footer() {
                   href="https://linkedin.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-white border border-[#E8E5DD] hover:border-[#141312] hover:bg-[#141312] hover:text-white flex items-center justify-center text-[#646059] transition-all duration-300"
+                  className="w-9 h-9 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#141312] dark:hover:border-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-white dark:hover:text-[#141312] flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
                   aria-label="LinkedIn Profile"
                   title="LinkedIn"
                 >
@@ -105,7 +104,7 @@ export default function Footer() {
                   href="https://github.com/abinayapoojha1411-oss"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-white border border-[#E8E5DD] hover:border-[#141312] hover:bg-[#141312] hover:text-white flex items-center justify-center text-[#646059] transition-all duration-300"
+                  className="w-9 h-9 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#141312] dark:hover:border-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-white dark:hover:text-[#141312] flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
                   aria-label="GitHub Profile"
                   title="GitHub"
                 >
@@ -116,7 +115,7 @@ export default function Footer() {
                   href="https://wa.me/918667696928"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-white border border-[#E8E5DD] hover:border-emerald-600 hover:bg-emerald-600 hover:text-white flex items-center justify-center text-[#646059] transition-all duration-300"
+                  className="w-9 h-9 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-emerald-600 hover:bg-emerald-600 hover:text-white flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
                   aria-label="WhatsApp Chat (+91 86676 96928)"
                   title="WhatsApp: +91 86676 96928"
                 >
@@ -130,7 +129,7 @@ export default function Footer() {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#E8E5DD] bg-white text-xs font-semibold uppercase tracking-wider text-[#646059] hover:text-[#141312] hover:border-[#141312] transition-all duration-300 shadow-2xs"
+                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#E8E5DD] dark:border-[#2E2C28] bg-white dark:bg-[#171614] text-xs font-semibold uppercase tracking-wider text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0] hover:border-[#141312] dark:hover:border-[#F7F5F0] transition-all duration-300 shadow-2xs"
               >
                 <span>Back to top</span>
                 <ArrowUp className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-1 text-[#C25E3E]" />
@@ -141,7 +140,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Legal / Copyright Row */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8F8B83] gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8F8B83] dark:text-[#7A756C] gap-4">
           <p>© 2026 Abinaya. All rights reserved.</p>
           <p className="font-mono text-[11px]">Designed &amp; Developed with Clean React &amp; Tailwind CSS</p>
         </div>
