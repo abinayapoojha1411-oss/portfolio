@@ -202,15 +202,7 @@ export default function Contact() {
                 >
                   <GitHubIcon className="w-4 h-4" />
                 </a>
-                <a
-                  href="https://instagram.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-white border border-[#E8E5DD] hover:border-[#141312] hover:bg-[#141312] hover:text-white flex items-center justify-center text-[#646059] transition-all duration-300"
-                  aria-label="Instagram Profile"
-                >
-                  <InstagramIcon className="w-4 h-4" />
-                </a>
+
               </div>
             </div>
           </div>
