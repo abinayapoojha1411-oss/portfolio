@@ -180,7 +180,7 @@ export default function Contact() {
 
                 {/* Email Option */}
                 <a
-                  href="mailto:abinayapoojha1411@gmail.com"
+                  href="mailto:webnest.web7@gmail.com"
                   className="group flex items-center justify-between p-4 rounded-xl bg-[#FFFFFF] dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E] dark:hover:border-[#C25E3E] transition-all duration-300 shadow-2xs hover:shadow-sm"
                 >
                   <div className="flex items-center gap-3">
@@ -189,7 +189,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-[#141312] dark:text-[#F7F5F0]">Direct Email</div>
-                      <div className="text-xs text-[#646059] dark:text-[#A6A196]">abinayapoojha1411@gmail.com</div>
+                      <div className="text-xs text-[#646059] dark:text-[#A6A196]">webnest.web7@gmail.com</div>
                     </div>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-[#8F8B83] dark:text-[#7A756C] group-hover:text-[#C25E3E] transition-colors" />
@@ -382,7 +382,7 @@ export default function Contact() {
                         <p className="text-[#646059] dark:text-[#A6A196]">{submitError}</p>
                       </div>
                       <a
-                        href={`mailto:abinayapoojha1411@gmail.com?subject=${encodeURIComponent(
+                        href={`mailto:webnest.web7@gmail.com?subject=${encodeURIComponent(
                           `New Project Enquiry from ${formData.name || 'Client'} (${formData.business || 'Business'})`
                         )}&body=${encodeURIComponent(
                           `Name: ${formData.name}\nEmail: ${formData.email}\nBusiness: ${formData.business}\nWebsite Type: ${formData.websiteType}\n\nProject Details:\n${formData.details}`

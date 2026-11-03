@@ -1,11 +1,11 @@
 @echo off
-set "PATH=C:\Users\Lenovo\AppData\Local\Programs\nodejs;%PATH%"
+set "PATH=C:\Users\Lenovo\AppData\Local\MinGit\cmd;C:\Program Files\Git\cmd;C:\Users\Lenovo\AppData\Local\Programs\nodejs;%PATH%"
 echo ================================================
 echo   Pushing your updates to GitHub and Vercel...
 echo ================================================
 git add .
 set /p commit_msg="Enter commit note (or press Enter for default): "
-if "%commit_msg%"=="" set commit_msg=update portfolio content
+if "%commit_msg%"=="" set commit_msg=update Webnest portfolio
 git commit -m "%commit_msg%"
 echo.
 echo Pushing to origin main...

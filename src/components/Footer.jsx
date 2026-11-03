@@ -112,10 +112,10 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="mailto:abinayapoojha1411@gmail.com"
+                  href="mailto:webnest.web7@gmail.com"
                   className="w-9 h-9 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E] hover:bg-[#C25E3E] hover:text-white flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
-                  aria-label="Send Email to abinayapoojha1411@gmail.com"
-                  title="Email: abinayapoojha1411@gmail.com"
+                  aria-label="Send Email to webnest.web7@gmail.com"
+                  title="Email: webnest.web7@gmail.com"
                 >
                   <Mail className="w-4 h-4" />
                 </a>
