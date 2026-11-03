@@ -75,29 +75,42 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitError('');
 
-    const payload = JSON.stringify({
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      business: formData.business.trim(),
-      websiteType: formData.websiteType,
-      details: formData.details.trim(),
-      timestamp: new Date().toISOString()
-    });
-
     try {
+      // 1. Direct delivery to abinayapoojha1411@gmail.com via FormSubmit AJAX API
+      const emailResponse = await fetch('https://formsubmit.co/ajax/abinayapoojha1411@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          business: formData.business.trim() || 'Not specified',
+          websiteType: formData.websiteType,
+          message: formData.details.trim(),
+          _subject: `New Webnest Enquiry from ${formData.name.trim()}`,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+
+      if (!emailResponse.ok) {
+        throw new Error('Email service response was not ok');
+      }
+
+      // 2. Optional: also log to Google Sheet if configured
       if (GOOGLE_SHEET_SCRIPT_URL) {
+        const payload = JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          business: formData.business.trim(),
+          websiteType: formData.websiteType,
+          details: formData.details.trim(),
+          timestamp: new Date().toISOString()
+        });
+
         try {
-          await fetch(GOOGLE_SHEET_SCRIPT_URL, {
-            method: 'POST',
-            redirect: 'follow',
-            headers: {
-              'Content-Type': 'text/plain;charset=utf-8'
-            },
-            body: payload
-          });
-        } catch (fetchErr) {
-          // If browser restricts 302 redirect response with CORS, mode no-cors delivers payload
-          console.warn('Redirect notice, retrying with no-cors:', fetchErr);
           await fetch(GOOGLE_SHEET_SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
@@ -106,15 +119,15 @@ export default function Contact() {
             },
             body: payload
           });
+        } catch (sheetErr) {
+          console.warn('Google Sheet log skipped:', sheetErr);
         }
-      } else {
-        console.info('Google Sheet Web App URL is pending deployment in src/config/sheetConfig.js.');
       }
 
       setSubmitted(true);
     } catch (err) {
       console.error('Submission error:', err);
-      setSubmitError('Unable to record enquiry to Google Sheet automatically right now.');
+      setSubmitError('Unable to send enquiry automatically right now. Please use the button below to send directly via email.');
     } finally {
       setIsSubmitting(false);
     }
@@ -222,10 +235,10 @@ export default function Contact() {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#141312] dark:text-[#F7F5F0] mb-3 tracking-tight">
-                    Enquiry Recorded Successfully!
+                    Enquiry Sent Successfully!
                   </h3>
                   <p className="text-sm text-[#646059] dark:text-[#A6A196] max-w-md mx-auto mb-6 leading-relaxed font-light">
-                    Thank you, <strong className="text-[#141312] dark:text-[#F7F5F0]">{formData.name}</strong>! Your project details have been recorded directly into our project database. I will review your requirements and respond within 24 business hours.
+                    Thank you, <strong className="text-[#141312] dark:text-[#F7F5F0]">{formData.name}</strong>! Your message has been sent directly to <strong className="text-[#141312] dark:text-[#F7F5F0]">abinayapoojha1411@gmail.com</strong>. I will review your requirements and respond within 24 business hours.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <button
@@ -396,7 +409,7 @@ export default function Contact() {
                       {isSubmitting ? (
                         <div className="flex items-center justify-center gap-2">
                           <Loader2 className="w-4 h-4 animate-spin text-[#C25E3E]" />
-                          <span>Recording to Google Sheet...</span>
+                          <span>Sending to abinayapoojha1411@gmail.com...</span>
                         </div>
                       ) : (
                         <>
@@ -406,7 +419,7 @@ export default function Contact() {
                       )}
                     </button>
                     <p className="text-[11px] text-center text-[#8F8B83] dark:text-[#7A756C] mt-3 font-light">
-                      Enquiries are securely recorded to our project database.
+                      Submissions are sent directly to abinayapoojha1411@gmail.com.
                     </p>
                   </div>
 
