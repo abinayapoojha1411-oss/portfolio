@@ -46,7 +46,7 @@ export default function About() {
 
             <div className="space-y-4 text-base sm:text-lg text-[#646059] dark:text-[#A6A196] leading-relaxed font-light transition-colors">
               <p>
-                I&apos;m <strong className="text-[#141312] dark:text-[#F7F5F0] font-semibold">Abinaya</strong>, a freelance web designer and developer focused on creating modern digital experiences for businesses and professionals.
+                Welcome to <strong className="text-[#141312] dark:text-[#F7F5F0] font-semibold">Webnest</strong> — where ideas take shape into modern digital experiences for businesses, brands, and professionals.
               </p>
               <p>
                 I enjoy turning ideas into clean, responsive and visually engaging websites that are easy to use and built around a clear purpose.

@@ -41,7 +41,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F1EA] dark:bg-[#1A1917] border border-[#E8E5DD] dark:border-[#2E2C28] mb-6 md:mb-8 transition-colors">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C25E3E]" />
               <span className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#646059] dark:text-[#A6A196]">
-                FREELANCE WEB DESIGNER & DEVELOPER
+                WEBNEST • WHERE IDEAS TAKE SHAPE
               </span>
             </div>
 

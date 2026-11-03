@@ -53,13 +53,18 @@ export default function Navbar() {
           <a
             href="#home"
             onClick={(e) => handleLinkClick(e, '#home')}
-            className="group flex items-center gap-1.5 focus:outline-none"
-            aria-label="Abinaya Portfolio Home"
+            className="group flex items-center gap-2.5 focus:outline-none"
+            aria-label="Webnest Home"
           >
-            <span className="text-xl md:text-2xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] transition-colors">
-              ABINAYA
+            <div className="flex items-center gap-1.5">
+              <span className="text-xl md:text-2xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] transition-colors">
+                WEBNEST
+              </span>
+              <span className="w-2 h-2 rounded-full bg-[#C25E3E] inline-block transition-transform duration-300 group-hover:scale-125" />
+            </div>
+            <span className="hidden lg:inline-block text-[11px] font-mono tracking-wider text-[#8F8B83] dark:text-[#7A756C] pl-2.5 border-l border-[#E8E5DD] dark:border-[#2E2C28]">
+              Where Ideas Take Shape
             </span>
-            <span className="w-2 h-2 rounded-full bg-[#C25E3E] inline-block transition-transform duration-300 group-hover:scale-125" />
           </a>
 
           {/* Luxury Theme Toggle Pill Placed Right Near the Name */}

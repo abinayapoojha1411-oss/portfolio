@@ -1,6 +1,6 @@
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
-import { LinkedInIcon, GitHubIcon, WhatsAppIcon } from './SocialIcons';
+import { ArrowUp, Mail } from 'lucide-react';
+import { LinkedInIcon, GitHubIcon } from './SocialIcons';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -44,17 +44,17 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-1.5 mb-2">
                 <span className="text-2xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0]">
-                  ABINAYA
+                  WEBNEST
                 </span>
                 <span className="w-2 h-2 rounded-full bg-[#C25E3E] inline-block" />
               </div>
 
-              <div className="text-xs font-mono font-medium tracking-wider text-[#646059] dark:text-[#A6A196] uppercase mb-4">
-                Freelance Web Designer &amp; Developer
+              <div className="text-xs font-mono font-medium tracking-wider text-[#C25E3E] uppercase mb-4">
+                Where Ideas Take Shape
               </div>
 
               <p className="text-sm text-[#646059] dark:text-[#A6A196] max-w-md leading-relaxed font-light mb-6">
-                Building modern digital experiences for ambitious businesses.
+                Building modern digital experiences for ambitious businesses and professionals.
               </p>
             </div>
 
@@ -112,14 +112,12 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="https://wa.me/918667696928"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-emerald-600 hover:bg-emerald-600 hover:text-white flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
-                  aria-label="WhatsApp Chat (+91 86676 96928)"
-                  title="WhatsApp: +91 86676 96928"
+                  href="mailto:abinayapoojha1411@gmail.com"
+                  className="w-9 h-9 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E] hover:bg-[#C25E3E] hover:text-white flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
+                  aria-label="Send Email to abinayapoojha1411@gmail.com"
+                  title="Email: abinayapoojha1411@gmail.com"
                 >
-                  <WhatsAppIcon className="w-4 h-4" />
+                  <Mail className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -141,7 +139,7 @@ export default function Footer() {
 
         {/* Bottom Legal / Copyright Row */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8F8B83] dark:text-[#7A756C] gap-4">
-          <p>© 2026 Abinaya. All rights reserved.</p>
+          <p>© 2026 Webnest. All rights reserved.</p>
           <p className="font-mono text-[11px]">Designed &amp; Developed with Clean React &amp; Tailwind CSS</p>
         </div>
 

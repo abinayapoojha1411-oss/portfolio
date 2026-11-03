@@ -5,9 +5,11 @@ import {
   CheckCircle2,
   AlertCircle,
   Clock,
-  ArrowUpRight
+  ArrowUpRight,
+  Loader2
 } from 'lucide-react';
-import { LinkedInIcon, GitHubIcon, WhatsAppIcon } from './SocialIcons';
+import { LinkedInIcon, GitHubIcon } from './SocialIcons';
+import { GOOGLE_SHEET_SCRIPT_URL } from '../config/sheetConfig';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -21,6 +23,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const websiteTypes = [
     'Business Website',
@@ -56,11 +59,12 @@ export default function Contact() {
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: null }));
     }
+    if (submitError) {
+      setSubmitError('');
+    }
   };
 
-  const [submittedUrl, setSubmittedUrl] = useState('');
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -69,26 +73,51 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
+    setSubmitError('');
 
-    // Format structured enquiry message for WhatsApp
-    const message =
-      `*New Project Enquiry — Abinaya Portfolio*\n\n` +
-      `👤 *Name:* ${formData.name.trim()}\n` +
-      `📧 *Email:* ${formData.email.trim()}\n` +
-      `🏢 *Business / Brand:* ${formData.business.trim()}\n` +
-      `💻 *Website Type:* ${formData.websiteType}\n\n` +
-      `📝 *Project Details:*\n${formData.details.trim()}`;
+    const payload = JSON.stringify({
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      business: formData.business.trim(),
+      websiteType: formData.websiteType,
+      details: formData.details.trim(),
+      timestamp: new Date().toISOString()
+    });
 
-    const whatsappUrl = `https://wa.me/918667696928?text=${encodeURIComponent(message)}`;
-    setSubmittedUrl(whatsappUrl);
+    try {
+      if (GOOGLE_SHEET_SCRIPT_URL) {
+        try {
+          await fetch(GOOGLE_SHEET_SCRIPT_URL, {
+            method: 'POST',
+            redirect: 'follow',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: payload
+          });
+        } catch (fetchErr) {
+          // If browser restricts 302 redirect response with CORS, mode no-cors delivers payload
+          console.warn('Redirect notice, retrying with no-cors:', fetchErr);
+          await fetch(GOOGLE_SHEET_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: payload
+          });
+        }
+      } else {
+        console.info('Google Sheet Web App URL is pending deployment in src/config/sheetConfig.js.');
+      }
 
-    // Automatically trigger WhatsApp in a new tab/app
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-
-    setTimeout(() => {
-      setIsSubmitting(false);
       setSubmitted(true);
-    }, 400);
+    } catch (err) {
+      console.error('Submission error:', err);
+      setSubmitError('Unable to record enquiry to Google Sheet automatically right now.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -133,40 +162,21 @@ export default function Contact() {
               {/* Direct Channels */}
               <div className="space-y-3">
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8F8B83] dark:text-[#7A756C] block mb-2">
-                  Direct Contact Channels
+                  Direct Email Channel
                 </span>
 
                 {/* Email Option */}
                 <a
                   href="mailto:abinayapoojha1411@gmail.com"
-                  className="group flex items-center justify-between p-4 rounded-xl bg-[#FFFFFF] dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E] dark:hover:border-[#C25E3E] transition-all duration-300"
+                  className="group flex items-center justify-between p-4 rounded-xl bg-[#FFFFFF] dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E] dark:hover:border-[#C25E3E] transition-all duration-300 shadow-2xs hover:shadow-sm"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#141312] dark:text-[#F7F5F0] group-hover:bg-[#C25E3E] group-hover:text-white transition-colors">
                       <Mail className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-[#141312] dark:text-[#F7F5F0]">Email Me</div>
+                      <div className="text-xs font-bold text-[#141312] dark:text-[#F7F5F0]">Direct Email</div>
                       <div className="text-xs text-[#646059] dark:text-[#A6A196]">abinayapoojha1411@gmail.com</div>
-                    </div>
-                  </div>
-                  <ArrowUpRight className="w-4 h-4 text-[#8F8B83] dark:text-[#7A756C] group-hover:text-[#C25E3E] transition-colors" />
-                </a>
-
-                {/* WhatsApp Option */}
-                <a
-                  href="https://wa.me/918667696928"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-4 rounded-xl bg-[#FFFFFF] dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E] dark:hover:border-[#C25E3E] transition-all duration-300"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#141312] dark:text-[#F7F5F0] group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                      <WhatsAppIcon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-[#141312] dark:text-[#F7F5F0]">WhatsApp</div>
-                      <div className="text-xs text-[#646059] dark:text-[#A6A196]">+91 86676 96928</div>
                     </div>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-[#8F8B83] dark:text-[#7A756C] group-hover:text-[#C25E3E] transition-colors" />
@@ -212,23 +222,12 @@ export default function Contact() {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#141312] dark:text-[#F7F5F0] mb-3 tracking-tight">
-                    Enquiry Sent via WhatsApp!
+                    Enquiry Recorded Successfully!
                   </h3>
                   <p className="text-sm text-[#646059] dark:text-[#A6A196] max-w-md mx-auto mb-6 leading-relaxed font-light">
-                    Thank you, <strong className="text-[#141312] dark:text-[#F7F5F0]">{formData.name}</strong>! Your project details have been formatted and sent directly to my WhatsApp (+91 86676 96928).
+                    Thank you, <strong className="text-[#141312] dark:text-[#F7F5F0]">{formData.name}</strong>! Your project details have been recorded directly into our project database. I will review your requirements and respond within 24 business hours.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                    {submittedUrl && (
-                      <a
-                        href={submittedUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
-                      >
-                        <WhatsAppIcon className="w-4 h-4" />
-                        <span>Continue in WhatsApp</span>
-                      </a>
-                    )}
                     <button
                       type="button"
                       onClick={() => {
@@ -363,6 +362,30 @@ export default function Contact() {
                     )}
                   </div>
 
+                  {/* Submit Error Fallback Alert */}
+                  {submitError && (
+                    <div className="p-4 rounded-2xl bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-[#141312] dark:text-[#F7F5F0] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                      <div>
+                        <div className="font-semibold text-amber-800 dark:text-amber-200 flex items-center gap-1.5 mb-0.5">
+                          <AlertCircle className="w-3.5 h-3.5" />
+                          <span>Direct Email Option</span>
+                        </div>
+                        <p className="text-[#646059] dark:text-[#A6A196]">{submitError}</p>
+                      </div>
+                      <a
+                        href={`mailto:abinayapoojha1411@gmail.com?subject=${encodeURIComponent(
+                          `New Project Enquiry from ${formData.name || 'Client'} (${formData.business || 'Business'})`
+                        )}&body=${encodeURIComponent(
+                          `Name: ${formData.name}\nEmail: ${formData.email}\nBusiness: ${formData.business}\nWebsite Type: ${formData.websiteType}\n\nProject Details:\n${formData.details}`
+                        )}`}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#C25E3E] text-white font-medium hover:bg-[#a94f33] transition-colors shrink-0 text-xs shadow-2xs"
+                      >
+                        <Mail className="w-3.5 h-3.5" />
+                        <span>Send via Email Client</span>
+                      </a>
+                    </div>
+                  )}
+
                   {/* Submit Button */}
                   <div>
                     <button
@@ -371,7 +394,10 @@ export default function Contact() {
                       className="group w-full py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
-                        <span>Processing Enquiry...</span>
+                        <div className="flex items-center justify-center gap-2">
+                          <Loader2 className="w-4 h-4 animate-spin text-[#C25E3E]" />
+                          <span>Recording to Google Sheet...</span>
+                        </div>
                       ) : (
                         <>
                           <span>Send Project Enquiry</span>
@@ -380,7 +406,7 @@ export default function Contact() {
                       )}
                     </button>
                     <p className="text-[11px] text-center text-[#8F8B83] dark:text-[#7A756C] mt-3 font-light">
-                      No spam. Your project details remain strictly confidential.
+                      Enquiries are securely recorded to our project database.
                     </p>
                   </div>
 

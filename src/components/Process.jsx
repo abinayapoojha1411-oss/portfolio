@@ -128,7 +128,7 @@ export default function Process() {
                 ))}
               </ul>
               <div className="mt-6 pt-6 border-t border-[#E8E5DD] dark:border-[#2E2C28] text-xs text-[#646059] dark:text-[#A6A196] transition-colors">
-                Continuous communication via WhatsApp / Email throughout.
+                Continuous communication and structured updates via Email throughout.
               </div>
             </div>
 

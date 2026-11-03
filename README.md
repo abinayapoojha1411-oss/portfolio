@@ -1,6 +1,6 @@
-# Abinaya — Freelance Web Designer & Developer Portfolio
+# Webnest — Where Ideas Take Shape
 
-A production-quality, editorial creative-agency style freelance portfolio website built for **Abinaya**. Designed to win real freelance clients with minimal luxury aesthetics, business-focused copy, and interactive showcase cards.
+A production-quality, editorial creative-agency style freelance portfolio website for **Webnest** ("Where Ideas Take Shape"). Designed to win real freelance clients with minimal luxury aesthetics, business-focused copy, and interactive showcase cards.
 
 ---
 
@@ -36,8 +36,8 @@ A production-quality, editorial creative-agency style freelance portfolio websit
 11. **Portfolio Expansion (`PortfolioCallout.jsx`)**: Invitation to collaborate on real projects (no fake testimonials).
 12. **Project Enquiry Contact (`Contact.jsx`)**:
     - Comprehensive form with name, email, business, website type, budget dropdowns, and message details.
-    - Full client-side validation with instant visual feedback.
-    - Direct communication channels: Email, WhatsApp, LinkedIn, GitHub, Instagram.
+    - Form submissions automatically recorded to Google Sheet.
+    - Direct communication channels: Email, LinkedIn, GitHub.
 13. **Final Dramatic CTA (`FinalCta.jsx`)**: High-impact editorial call to action.
 14. **Footer (`Footer.jsx`)**: Complete footer with navigation, copyright, and smooth "Back to top" button.
 
@@ -87,4 +87,4 @@ In [`src/components/Contact.jsx`](file:///c:/Users/Lenovo/Documents/portfolio/sr
 
 ---
 
-© 2026 Abinaya. All rights reserved.
+© 2026 Webnest. All rights reserved.
