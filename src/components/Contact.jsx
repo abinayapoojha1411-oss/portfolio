@@ -47,7 +47,7 @@ export default function Contact() {
     if (!formData.business.trim()) {
       errs.business = 'Please specify your business or brand name';
     }
-    if (!formData.details.trim() || formData.details.trim().length < 15) {
+    if (!formData.details.trim() || formData.details.trim().length < 10) {
       errs.details = 'Please share at least a short sentence (15+ characters) about your goals';
     }
     return errs;
@@ -77,7 +77,7 @@ export default function Contact() {
 
     try {
       // 1. Direct delivery to abinayapoojha1411@gmail.com via FormSubmit AJAX API
-      const emailResponse = await fetch('https://formsubmit.co/ajax/abinayapoojha1411@gmail.com', {
+      const emailResponse = await fetch('https://formsubmit.co/ajax/webnest.web7@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -235,10 +235,10 @@ export default function Contact() {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#141312] dark:text-[#F7F5F0] mb-3 tracking-tight">
-                    Enquiry Sent Successfully!
+                    Enquiry Submitted Successfully!
                   </h3>
                   <p className="text-sm text-[#646059] dark:text-[#A6A196] max-w-md mx-auto mb-6 leading-relaxed font-light">
-                    Thank you, <strong className="text-[#141312] dark:text-[#F7F5F0]">{formData.name}</strong>! Your message has been sent directly to <strong className="text-[#141312] dark:text-[#F7F5F0]">abinayapoojha1411@gmail.com</strong>. I will review your requirements and respond within 24 business hours.
+                    Thank you, <strong className="text-[#141312] dark:text-[#F7F5F0]">{formData.name}</strong>! Your message has been received. I will review your requirements and respond within 24 business hours.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                     <button
@@ -275,9 +275,8 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. Priya Sharma"
-                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${
-                          errors.name ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
-                        }`}
+                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.name ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
+                          }`}
                       />
                       {errors.name && (
                         <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
@@ -297,9 +296,8 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="priya@company.com"
-                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${
-                          errors.email ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
-                        }`}
+                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.email ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
+                          }`}
                       />
                       {errors.email && (
                         <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
@@ -321,9 +319,8 @@ export default function Contact() {
                       value={formData.business}
                       onChange={handleChange}
                       placeholder="e.g. Studio Vista Architecture"
-                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${
-                        errors.business ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.business ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
+                        }`}
                     />
                     {errors.business && (
                       <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
@@ -364,9 +361,8 @@ export default function Contact() {
                       value={formData.details}
                       onChange={handleChange}
                       placeholder="Tell me briefly about what you are looking to build, any inspirations, or target completion dates..."
-                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${
-                        errors.details ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.details ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
+                        }`}
                     />
                     {errors.details && (
                       <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
@@ -409,7 +405,7 @@ export default function Contact() {
                       {isSubmitting ? (
                         <div className="flex items-center justify-center gap-2">
                           <Loader2 className="w-4 h-4 animate-spin text-[#C25E3E]" />
-                          <span>Sending to abinayapoojha1411@gmail.com...</span>
+                          <span>Submitting...</span>
                         </div>
                       ) : (
                         <>
@@ -419,7 +415,7 @@ export default function Contact() {
                       )}
                     </button>
                     <p className="text-[11px] text-center text-[#8F8B83] dark:text-[#7A756C] mt-3 font-light">
-                      Submissions are sent directly to abinayapoojha1411@gmail.com.
+                      No spam. Your project details remain strictly confidential.
                     </p>
                   </div>
 
