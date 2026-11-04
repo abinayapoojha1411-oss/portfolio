@@ -37,18 +37,5 @@ export const services = [
       'Zero bloated page builders'
     ],
     iconName: 'RefreshCw'
-  },
-  {
-    number: '04',
-    title: 'UI/UX Design & Optimization',
-    description:
-      'User-centered interface design, conversion wireframes, and performance tuning that elevate your digital brand.',
-    features: [
-      'Intuitive user journeys & hierarchy',
-      'Wireframing & interactive prototypes',
-      'Conversion-focused call to actions',
-      'Cross-browser & cross-device testing'
-    ],
-    iconName: 'Sparkles'
   }
 ];

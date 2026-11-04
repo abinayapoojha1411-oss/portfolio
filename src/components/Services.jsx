@@ -3,7 +3,6 @@ import {
   Building2, 
   FileText, 
   RefreshCw, 
-  Sparkles, 
   ArrowUpRight 
 } from 'lucide-react';
 import { services } from '../data/servicesData';
@@ -11,8 +10,7 @@ import { services } from '../data/servicesData';
 const iconMap = {
   Building2,
   FileText,
-  RefreshCw,
-  Sparkles
+  RefreshCw
 };
 
 export default function Services() {
@@ -52,8 +50,8 @@ export default function Services() {
           </p>
         </div>
 
-        {/* 4 Core Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {/* 3 Core Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {services.map((service) => {
             const IconComponent = iconMap[service.iconName] || Briefcase;
 
