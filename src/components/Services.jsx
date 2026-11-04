@@ -5,15 +5,13 @@ import {
   RefreshCw, 
   ArrowUpRight 
 } from 'lucide-react';
-import { services } from '../data/servicesData';
+import { useLanguage } from '../context/LanguageContext';
 
-const iconMap = {
-  Building2,
-  FileText,
-  RefreshCw
-};
+const iconList = [Building2, FileText, RefreshCw];
 
 export default function Services() {
+  const { t } = useLanguage();
+
   const handleConsultClick = (e) => {
     e.preventDefault();
     const target = document.getElementById('contact');
@@ -38,22 +36,22 @@ export default function Services() {
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="w-2 h-2 rounded-full bg-[#C25E3E]" />
               <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E]">
-                CORE SERVICES
+                {t.services.eyebrow}
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-tight transition-colors">
-              Tailored digital solutions.
+              {t.services.title}
             </h2>
           </div>
           <p className="text-base sm:text-lg text-[#646059] dark:text-[#A6A196] max-w-md font-light transition-colors">
-            From bespoke websites to professional resume design, every deliverable is crafted to make you and your brand stand out.
+            {t.services.subtitle}
           </p>
         </div>
 
         {/* 3 Core Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service) => {
-            const IconComponent = iconMap[service.iconName] || Briefcase;
+          {t.services.items.map((service, idx) => {
+            const IconComponent = iconList[idx] || Building2;
 
             return (
               <div
@@ -63,7 +61,7 @@ export default function Services() {
                 <div>
                   {/* Top Row: Number & Icon */}
                   <div className="flex items-center justify-between mb-8">
-                    <span className="text-xs font-mono font-bold text-[#8F8B83] dark:text-[#7A756B] group-hover:text-[#C25E3E] transition-colors">
+                    <span className="text-xs font-mono font-bold text-[#8F8B83] dark:text-[#7A756C] group-hover:text-[#C25E3E] transition-colors">
                       SERVICE {service.number}
                     </span>
                     <div className="w-11 h-11 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#141312] dark:text-[#F7F5F0] group-hover:bg-[#C25E3E] group-hover:text-white group-hover:border-[#C25E3E] transition-all duration-300">
@@ -99,7 +97,7 @@ export default function Services() {
                     onClick={handleConsultClick}
                     className="text-xs font-semibold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] group-hover:text-[#C25E3E] inline-flex items-center gap-1.5 transition-colors"
                   >
-                    <span>Discuss Requirements</span>
+                    <span>{t.services.discussBtn}</span>
                   </a>
                   <div className="w-8 h-8 rounded-full bg-[#FAF9F6] dark:bg-[#1E1D1B] group-hover:bg-[#C25E3E] flex items-center justify-center text-[#141312] dark:text-[#F7F5F0] group-hover:text-white transition-all duration-300">
                     <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

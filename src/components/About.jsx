@@ -1,27 +1,11 @@
 import React from 'react';
 import { Palette, Code, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+
+const icons = [Palette, Code, TrendingUp];
 
 export default function About() {
-  const highlights = [
-    {
-      icon: Palette,
-      title: 'Design',
-      description: 'Clean, modern and user-focused interfaces.',
-      details: 'Visual hierarchy, typography rhythm, intentional whitespace and modern aesthetics tailored to your business identity.'
-    },
-    {
-      icon: Code,
-      title: 'Development',
-      description: 'Responsive and functional web experiences.',
-      details: 'Lightweight, semantic React code that functions flawlessly across smartphones, tablets and desktop screens.'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Business',
-      description: 'Websites structured around real business goals.',
-      details: 'Designed with the customer journey in mind — reducing friction and maximizing discovery and enquiry conversion.'
-    }
-  ];
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="py-24 md:py-32 bg-[#FAF9F6] dark:bg-[#0F0E0D] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
@@ -33,46 +17,40 @@ export default function About() {
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="w-2 h-2 rounded-full bg-[#C25E3E]" />
               <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E]">
-                ABOUT ME
+                {t.about.eyebrow}
               </span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-[1.15] mb-6 transition-colors">
-              I care about how a website feels —{' '}
+              {t.about.titleStart}{' '}
               <span className="font-serif italic font-normal text-[#C25E3E]">
-                and what it achieves.
+                {t.about.titleHighlight}
               </span>
             </h2>
 
             <div className="space-y-4 text-base sm:text-lg text-[#646059] dark:text-[#A6A196] leading-relaxed font-light transition-colors">
               <p>
-                Welcome to <strong className="text-[#141312] dark:text-[#F7F5F0] font-semibold">Webnest</strong> — where ideas take shape into modern digital experiences for businesses, brands, and professionals.
+                {t.about.p1Start} <strong className="text-[#141312] dark:text-[#F7F5F0] font-semibold">Webnest</strong> {t.about.p1End}
               </p>
               <p>
-                I enjoy turning ideas into clean, responsive and visually engaging websites that are easy to use and built around a clear purpose.
+                {t.about.p2}
               </p>
             </div>
 
             <div className="mt-8 pt-8 border-t border-[#E8E5DD] dark:border-[#2E2C28] flex items-center gap-6 text-xs text-[#646059] dark:text-[#A6A196] transition-colors">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#C25E3E]" />
-                <span>Freelance Partner</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#C25E3E]" />
-                <span>Modern Standards</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#C25E3E]" />
-                <span>Direct Collaboration</span>
-              </div>
+              {t.about.checks.map((chk, cIdx) => (
+                <div key={cIdx} className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#C25E3E]" />
+                  <span>{chk}</span>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Right Column: Three Highlights */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            {highlights.map((item, idx) => {
-              const Icon = item.icon;
+            {t.about.pillars.map((item, idx) => {
+              const Icon = icons[idx] || Palette;
               return (
                 <div
                   key={idx}

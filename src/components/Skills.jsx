@@ -1,7 +1,10 @@
 import React from 'react';
 import { skillGroups } from '../data/skillsData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Skills() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 md:py-32 bg-[#FFFFFF] dark:bg-[#141312] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
@@ -11,14 +14,14 @@ export default function Skills() {
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C25E3E]" />
             <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E]">
-              TECHNICAL FOUNDATIONS
+              {t.skills.eyebrow}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-tight mb-4 transition-colors">
-            Tools I Work With
+            {t.skills.title}
           </h2>
           <p className="text-lg text-[#646059] dark:text-[#A6A196] font-light transition-colors">
-            A practical, modern toolset chosen for reliability, high responsiveness, and clean code standards.
+            {t.skills.subtitle}
           </p>
         </div>
 
@@ -60,8 +63,6 @@ export default function Skills() {
                   ))}
                 </div>
               </div>
-
-
             </div>
           ))}
         </div>

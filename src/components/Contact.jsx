@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Mail, Copy, Check, ArrowUpRight, Clock, Sparkles } from 'lucide-react';
 import { LinkedInIcon, GitHubIcon } from './SocialIcons';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const { t } = useLanguage();
 
   const email = 'webnest.web7@gmail.com';
 
@@ -15,54 +17,41 @@ export default function Contact() {
     }
   };
 
-  const projectPrompts = [
-    {
-      title: 'Project Overview',
-      desc: 'A quick summary of what you need (brand new website, redesign, or landing page).'
-    },
-    {
-      title: 'Timeline & Goals',
-      desc: 'Your desired launch timeline, key deliverables, and commercial objectives.'
-    },
-    {
-      title: 'Design References',
-      desc: 'Any websites, visual styles, or brands that inspire your aesthetic vision.'
-    }
-  ];
-
   return (
     <section
       id="contact"
       className="py-24 md:py-36 bg-[#FAF9F6] dark:bg-[#0F0E0D] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300 relative overflow-hidden"
     >
       {/* Subtle warm glow in background */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-[#C25E3E]/5 via-[#F4F1EA]/40 dark:via-[#1A1917]/40 to-transparent blur-3xl pointer-events-none -z-10"
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-[#C25E3E]/5 via-[#F4F1EA]/40 dark:via-[#1A1917]/40 to-transparent blur-3xl pointer-events-none -z-10" 
         aria-hidden="true"
       />
 
       <div className="max-w-5xl mx-auto px-6 sm:px-8 md:px-12">
-
+        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F1EA] dark:bg-[#1A1917] border border-[#E8E5DD] dark:border-[#2E2C28] text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E] mb-6 transition-colors">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C25E3E]" />
-            <span>START A CONVERSATION</span>
+            <span>{t.contact.eyebrow}</span>
           </div>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-[1.08] mb-6 transition-colors">
-            Have an idea?{' '}
+            {t.contact.titleStart}{' '}
             <span className="font-serif italic font-normal text-[#C25E3E] block sm:inline">
-              Let&apos;s build it together.
+              {t.contact.titleHighlight}
             </span>
           </h2>
+
+          <p className="text-base sm:text-lg md:text-xl text-[#646059] dark:text-[#A6A196] leading-relaxed max-w-2xl mx-auto font-light transition-colors">
+            {t.contact.description}
+          </p>
         </div>
-
-
 
         {/* Central High-Impact Email Showcase Card */}
         <div className="relative bg-[#FFFFFF] dark:bg-[#171614] rounded-3xl p-6 sm:p-10 md:p-12 border border-[#E8E5DD] dark:border-[#2E2C28] shadow-[0_20px_60px_-15px_rgba(20,19,18,0.06)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] mb-12 transition-all">
-
+          
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pb-8 border-b border-[#E8E5DD] dark:border-[#2E2C28]">
             <div className="flex items-center text-left gap-4 min-w-0 w-full lg:w-auto">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#C25E3E] shrink-0 shadow-inner">
@@ -71,7 +60,7 @@ export default function Contact() {
 
               <div className="min-w-0">
                 <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#8F8B83] dark:text-[#7A756C] block mb-0.5">
-                  Direct Email
+                  {t.contact.emailLabel}
                 </span>
                 <a
                   href={`mailto:${email}?subject=New%20Project%20Enquiry%20%E2%80%94%20Webnest`}
@@ -94,12 +83,12 @@ export default function Contact() {
                 {copied ? (
                   <>
                     <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">Copied!</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">{t.contact.copiedBtn}</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5 text-[#C25E3E]" />
-                    <span>Copy</span>
+                    <span>{t.contact.copyBtn}</span>
                   </>
                 )}
               </button>
@@ -108,7 +97,7 @@ export default function Contact() {
                 href={`mailto:${email}?subject=New%20Project%20Enquiry%20%E2%80%94%20Webnest`}
                 className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] shrink-0"
               >
-                <span>Send Email</span>
+                <span>{t.contact.sendEmailBtn}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
@@ -122,17 +111,20 @@ export default function Contact() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600" />
               </span>
               <span className="font-medium text-[#141312] dark:text-[#F7F5F0]">
-                Available for freelance projects &amp; consultations
+                {t.contact.availableStatus}
               </span>
             </div>
 
-
+            <div className="flex items-center gap-2 text-[#8F8B83] dark:text-[#7A756C]">
+              <Clock className="w-4 h-4 text-[#C25E3E]" />
+              <span>{t.contact.responseTime}</span>
+            </div>
           </div>
         </div>
 
         {/* Helpful Tips: What to include in your message */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {projectPrompts.map((item, idx) => (
+          {t.contact.prompts.map((item, idx) => (
             <div
               key={idx}
               className="bg-[#FFFFFF]/70 dark:bg-[#171614]/70 rounded-2xl p-6 border border-[#E8E5DD] dark:border-[#2E2C28] transition-colors"
@@ -150,7 +142,7 @@ export default function Contact() {
         {/* Social / Profiles */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-[#E8E5DD] dark:border-[#2E2C28] text-xs text-[#8F8B83] dark:text-[#7A756C]">
           <div className="flex items-center gap-3">
-            <span className="font-mono uppercase tracking-wider">Also find me on:</span>
+            <span className="font-mono uppercase tracking-wider">{t.contact.alsoFindMe}</span>
             <div className="flex items-center gap-2">
               <a
                 href="https://www.linkedin.com/in/abinaya-saravanan-s"
@@ -174,7 +166,7 @@ export default function Contact() {
           </div>
 
           <div className="font-mono text-[11px]">
-            Based in India • Working with clients worldwide
+            {t.contact.locationText}
           </div>
         </div>
 

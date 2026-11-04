@@ -1,7 +1,9 @@
 import React from 'react';
 import { ArrowRight, ArrowDown, Lock, ExternalLink, Sparkles } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Hero() {
+  const { t } = useLanguage();
   const scrollToSection = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -41,15 +43,15 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F1EA] dark:bg-[#1A1917] border border-[#E8E5DD] dark:border-[#2E2C28] mb-6 md:mb-8 transition-colors">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C25E3E]" />
               <span className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#646059] dark:text-[#A6A196]">
-                WEBNEST • WHERE IDEAS TAKE SHAPE
+                {t.hero.eyebrow}
               </span>
             </div>
 
             {/* Main Dominant Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-[1.08] mb-6 md:mb-8 transition-colors">
-              I build websites that make businesses{' '}
+              {t.hero.headingStart}{' '}
               <span className="font-serif italic font-normal text-[#C25E3E] relative inline-block">
-                stand out.
+                {t.hero.headingHighlight}
                 <svg
                   className="absolute left-0 -bottom-1 sm:-bottom-2 w-full h-2 text-[#C25E3E]/20"
                   viewBox="0 0 100 20"
@@ -62,7 +64,7 @@ export default function Hero() {
 
             {/* Supporting Text */}
             <p className="text-lg sm:text-xl text-[#646059] dark:text-[#A6A196] leading-relaxed max-w-2xl mb-8 md:mb-10 font-normal transition-colors">
-              Modern, responsive websites for businesses, brands and professionals — designed to look exceptional and turn visitors into enquiries.
+              {t.hero.description}
             </p>
 
             {/* CTA Buttons */}
@@ -72,7 +74,7 @@ export default function Hero() {
                 onClick={(e) => scrollToSection(e, 'work')}
                 className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5"
               >
-                <span>View My Work</span>
+                <span>{t.hero.viewWork}</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
 
@@ -81,7 +83,7 @@ export default function Hero() {
                 onClick={(e) => scrollToSection(e, 'contact')}
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#F4F1EA] dark:bg-[#1A1917] text-[#141312] dark:text-[#F7F5F0] hover:bg-[#E8E5DD] dark:hover:bg-[#252320] border border-[#E8E5DD] dark:border-[#2E2C28] transition-all duration-300 text-center"
               >
-                Let&apos;s Work Together
+                {t.hero.letsWork}
               </a>
             </div>
 
@@ -92,7 +94,7 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
               </span>
               <p className="text-xs sm:text-sm font-medium text-[#646059] dark:text-[#A6A196] transition-colors">
-                Available for freelance projects • India
+                {t.hero.availableStatus}
               </p>
             </div>
           </div>
@@ -145,7 +147,7 @@ export default function Hero() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#141312]/85 via-[#141312]/30 to-transparent flex flex-col justify-end p-5 text-white">
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-mono font-medium uppercase tracking-wider text-white w-max mb-2">
                       <Sparkles className="w-3 h-3 text-[#FAF9F6]" />
-                      <span>Featured Work • Interior Design</span>
+                      <span>{t.hero.featuredWork}</span>
                     </div>
                     <h3 className="font-serif text-xl sm:text-2xl font-medium tracking-tight text-white mb-1">
                       Haven Interiors Studio
@@ -165,7 +167,7 @@ export default function Hero() {
                     rel="noopener noreferrer"
                     className="font-semibold text-[#141312] dark:text-[#F7F5F0] hover:text-[#C25E3E] inline-flex items-center gap-1 transition-colors"
                   >
-                    <span>View Live</span>
+                    <span>{t.hero.viewLive}</span>
                     <ArrowRight className="w-3 h-3" />
                   </a>
                 </div>
@@ -177,8 +179,8 @@ export default function Hero() {
                   100%
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-[#141312] dark:text-[#F7F5F0]">Bespoke Code</div>
-                  <div className="text-[10px] text-[#8F8B83] dark:text-[#7A756B]">Zero generic templates</div>
+                  <div className="text-xs font-bold text-[#141312] dark:text-[#F7F5F0]">{t.hero.bespokeCode}</div>
+                  <div className="text-[10px] text-[#8F8B83] dark:text-[#7A756B]">{t.hero.noTemplates}</div>
                 </div>
               </div>
             </div>
@@ -194,7 +196,7 @@ export default function Hero() {
           onClick={(e) => scrollToSection(e, 'value')}
           className="group inline-flex items-center gap-2 text-xs font-mono font-medium tracking-widest text-[#8F8B83] dark:text-[#7A756B] hover:text-[#141312] dark:hover:text-[#F7F5F0] uppercase transition-colors"
         >
-          <span>SCROLL TO EXPLORE</span>
+          <span>{t.hero.scrollExplore}</span>
           <ArrowDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-y-1 text-[#C25E3E]" />
         </a>
       </div>

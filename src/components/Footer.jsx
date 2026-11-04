@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowUp, Mail } from 'lucide-react';
 import { LinkedInIcon, GitHubIcon } from './SocialIcons';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -11,10 +14,10 @@ export default function Footer() {
   };
 
   const navLinks = [
-    { name: 'Work', href: '#work' },
-    { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav.work, href: '#work' },
+    { name: t.nav.services, href: '#services' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   const handleLinkClick = (e, href) => {
@@ -49,23 +52,23 @@ export default function Footer() {
               </div>
 
               <div className="text-xs font-mono font-medium tracking-wider text-[#C25E3E] uppercase mb-4">
-                Where Ideas Take Shape
+                {t.footer.tagline}
               </div>
 
               <p className="text-sm text-[#646059] dark:text-[#A6A196] max-w-md leading-relaxed font-light mb-6">
-                Building modern digital experiences for ambitious businesses and professionals.
+                {t.footer.description}
               </p>
             </div>
 
             <div className="text-xs text-[#8F8B83] dark:text-[#7A756C]">
-              Based in India • Working with clients globally
+              {t.footer.location}
             </div>
           </div>
 
           {/* Quick Navigation (3 cols) */}
           <div className="md:col-span-3">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] block mb-4">
-              Navigation
+              {t.footer.navigationTitle}
             </span>
             <ul className="space-y-3">
               {navLinks.map((link) => (
@@ -86,11 +89,11 @@ export default function Footer() {
           <div className="md:col-span-3 flex flex-col justify-between">
             <div>
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] block mb-4">
-                Connect
+                {t.footer.connectTitle}
               </span>
               <div className="flex items-center gap-2.5 mb-6">
                 <a
-                  href="https://linkedin.com/"
+                  href="https://www.linkedin.com/in/abinaya-saravanan-s"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#141312] dark:hover:border-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-white dark:hover:text-[#141312] flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
@@ -126,9 +129,9 @@ export default function Footer() {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#E8E5DD] dark:border-[#2E2C28] bg-white dark:bg-[#171614] text-xs font-semibold uppercase tracking-wider text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0] hover:border-[#141312] dark:hover:border-[#F7F5F0] transition-all duration-300 shadow-2xs"
+                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#E8E5DD] dark:border-[#2E2C28] bg-white dark:bg-[#171614] text-xs font-semibold uppercase tracking-wider text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0] hover:border-[#141312] dark:hover:border-[#F7F5F0] transition-all duration-300 shadow-2xs cursor-pointer"
               >
-                <span>Back to top</span>
+                <span>{t.footer.backToTop}</span>
                 <ArrowUp className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-1 text-[#C25E3E]" />
               </button>
             </div>
@@ -138,8 +141,8 @@ export default function Footer() {
 
         {/* Bottom Legal / Copyright Row */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8F8B83] dark:text-[#7A756C] gap-4">
-          <p>© 2026 Webnest. All rights reserved.</p>
-
+          <p>{t.footer.copyright}</p>
+          <p className="font-mono text-[11px]">{t.footer.builtWith}</p>
         </div>
 
       </div>

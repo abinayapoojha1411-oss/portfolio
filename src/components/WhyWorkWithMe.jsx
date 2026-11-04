@@ -1,33 +1,11 @@
 import React from 'react';
 import { Compass, Smartphone, MousePointerClick, LifeBuoy } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+
+const icons = [Compass, Smartphone, MousePointerClick, LifeBuoy];
 
 export default function WhyWorkWithMe() {
-  const points = [
-    {
-      icon: Compass,
-      number: '01',
-      title: 'Business First',
-      text: 'I think about the purpose behind every section, not just how it looks.'
-    },
-    {
-      icon: Smartphone,
-      number: '02',
-      title: 'Responsive by Default',
-      text: 'Websites are designed to work smoothly across desktop, tablet and mobile.'
-    },
-    {
-      icon: MousePointerClick,
-      number: '03',
-      title: 'Clear User Experience',
-      text: 'Simple navigation, strong hierarchy and clear calls-to-action.'
-    },
-    {
-      icon: LifeBuoy,
-      number: '04',
-      title: 'End-to-End Support',
-      text: 'From the initial idea to deployment, I can help bring the website online.'
-    }
-  ];
+  const { t } = useLanguage();
 
   return (
     <section className="py-24 md:py-32 bg-[#FFFFFF] dark:bg-[#141312] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
@@ -38,21 +16,21 @@ export default function WhyWorkWithMe() {
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C25E3E]" />
             <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E]">
-              THE APPROACH
+              {t.whyWorkWithMe.eyebrow}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-tight mb-4 transition-colors">
-            More than just a website.
+            {t.whyWorkWithMe.title}
           </h2>
           <p className="text-lg text-[#646059] dark:text-[#A6A196] font-light transition-colors">
-            A reliable partner focused on measurable clarity, aesthetic dignity, and your commercial outcomes.
+            {t.whyWorkWithMe.subtitle}
           </p>
         </div>
 
         {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {points.map((pt) => {
-            const Icon = pt.icon;
+          {t.whyWorkWithMe.points.map((pt, idx) => {
+            const Icon = icons[idx] || Compass;
             return (
               <div
                 key={pt.number}

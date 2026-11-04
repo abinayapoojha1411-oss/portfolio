@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { ExternalLink, ArrowUpRight, Lock, Eye } from 'lucide-react';
 import { projects } from '../data/projectsData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Projects() {
   const [filter, setFilter] = useState('All');
+  const { t, isTamil } = useLanguage();
 
   const categories = ['All', 'Interior Design', 'Hospitality', 'Photography', 'Wedding Planning', 'Fitness & Wellness'];
+
+  const getCategoryLabel = (cat) => {
+    if (cat === 'All') return t.projects.allCategory;
+    return t.projects.categories[cat] || cat;
+  };
 
   const filteredProjects = filter === 'All' 
     ? projects 
@@ -21,14 +28,14 @@ export default function Projects() {
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="w-2 h-2 rounded-full bg-[#C25E3E]" />
               <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E]">
-                SELECTED WORK
+                {t.projects.eyebrow}
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-tight mb-3 transition-colors">
-              A few things I&apos;ve built.
+              {t.projects.title}
             </h2>
             <p className="text-lg text-[#646059] dark:text-[#A6A196] font-light max-w-xl transition-colors">
-              Business-focused websites designed across different industries.
+              {t.projects.subtitle}
             </p>
           </div>
 
@@ -39,13 +46,13 @@ export default function Projects() {
                 key={cat}
                 type="button"
                 onClick={() => setFilter(cat)}
-                className={`text-xs px-3.5 py-1.5 rounded-full font-medium transition-all duration-300 ${
+                className={`text-xs px-3.5 py-1.5 rounded-full font-medium transition-all duration-300 cursor-pointer ${
                   filter === cat
                     ? 'bg-[#141312] dark:bg-[#F7F5F0] text-white dark:text-[#141312] shadow-sm'
                     : 'bg-[#F4F1EA] dark:bg-[#1A1917] text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0] hover:bg-[#E8E5DD] dark:hover:bg-[#252320]'
                 }`}
               >
-                {cat}
+                {getCategoryLabel(cat)}
               </button>
             ))}
           </div>
@@ -167,7 +174,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="group/btn inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-sm"
                     >
-                      <span>View Live Website</span>
+                      <span>{t.projects.viewLive}</span>
                       <ExternalLink className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                     </a>
                   </div>
@@ -268,7 +275,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="group/link inline-flex items-center justify-between w-full px-5 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#FFFFFF] dark:bg-[#1E1D1B] text-[#141312] dark:text-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-[#FAF9F6] dark:hover:text-[#141312] border border-[#E8E5DD] dark:border-[#2E2C28] transition-all duration-300"
                     >
-                      <span>View Live Website</span>
+                      <span>{t.projects.viewLive}</span>
                       <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                     </a>
                   </div>
@@ -288,7 +295,7 @@ export default function Projects() {
             }}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#F4F1EA] dark:bg-[#1A1917] text-[#141312] dark:text-[#F7F5F0] hover:bg-[#E8E5DD] dark:hover:bg-[#252320] border border-[#E8E5DD] dark:border-[#2E2C28] transition-all duration-300"
           >
-            <span>Have a Project in Mind? Let&apos;s Build It →</span>
+            <span>{isTamil ? 'புதிய திட்டம் உள்ளதா? வாருங்கள், உருவாக்குவோம் →' : "Have a Project in Mind? Let's Build It →"}</span>
           </a>
         </div>
 

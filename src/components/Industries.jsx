@@ -10,6 +10,7 @@ import {
   Rocket
 } from 'lucide-react';
 import { industries } from '../data/industriesData';
+import { useLanguage } from '../context/LanguageContext';
 
 const iconMap = {
   Compass,
@@ -23,6 +24,8 @@ const iconMap = {
 };
 
 export default function Industries() {
+  const { t, isTamil } = useLanguage();
+
   return (
     <section className="py-24 md:py-32 bg-[#FAF9F6] dark:bg-[#0F0E0D] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
@@ -32,14 +35,14 @@ export default function Industries() {
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C25E3E]" />
             <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E]">
-              TAILORED INDUSTRY EXPERTISE
+              {t.industries.eyebrow}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-tight mb-4 transition-colors">
-            Built for Different Businesses
+            {t.industries.title}
           </h2>
           <p className="text-lg text-[#646059] dark:text-[#A6A196] font-light transition-colors">
-            Every sector has unique customer expectations. I craft digital presences tailored to the exact psychology and purchasing decisions of your audience.
+            {t.industries.subtitle}
           </p>
         </div>
 
@@ -64,15 +67,13 @@ export default function Industries() {
                   </div>
 
                   <h3 className="text-lg font-bold text-[#141312] dark:text-[#F7F5F0] mb-2 tracking-tight group-hover:text-[#C25E3E] transition-colors">
-                    {ind.name}
+                    {isTamil ? ind.nameTa : ind.name}
                   </h3>
 
                   <p className="text-xs sm:text-sm text-[#646059] dark:text-[#A6A196] leading-relaxed font-light transition-colors">
-                    {ind.description}
+                    {isTamil ? ind.descriptionTa : ind.description}
                   </p>
                 </div>
-
-
               </div>
             );
           })}

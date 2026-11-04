@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toggleTheme, isDark } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,10 +18,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Work', href: '#work' },
-    { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav.work, href: '#work' },
+    { name: t.nav.services, href: '#services' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   const handleLinkClick = (e, href) => {
@@ -47,7 +49,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex items-center justify-between">
         
-        {/* Left Side: Brand Logo & Dark/Light Mode Switcher */}
+        {/* Left Side: Brand Logo, Theme Switcher & Language Switcher */}
         <div className="flex items-center gap-3 sm:gap-4">
           <a
             href="#home"
@@ -62,16 +64,16 @@ export default function Navbar() {
               <span className="w-2 h-2 rounded-full bg-[#C25E3E] inline-block transition-transform duration-300 group-hover:scale-125" />
             </div>
             <span className="hidden lg:inline-block text-[11px] font-mono tracking-wider text-[#8F8B83] dark:text-[#7A756C] pl-2.5 border-l border-[#E8E5DD] dark:border-[#2E2C28]">
-              Where Ideas Take Shape
+              {t.nav.tagline}
             </span>
           </a>
 
-          {/* Luxury Theme Toggle Pill Placed Right Near the Name */}
+          {/* Theme Toggle Pill */}
           <button
             type="button"
             onClick={toggleTheme}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F1EA] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] text-xs font-mono text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0] transition-all duration-300 hover:scale-105 shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F4F1EA] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] text-xs font-mono text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0] transition-all duration-300 hover:scale-105 shadow-2xs cursor-pointer"
             title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
             {isDark ? (
@@ -86,6 +88,36 @@ export default function Navbar() {
               </>
             )}
           </button>
+
+          {/* Language Switcher Pill (EN / தமிழ்) */}
+          <div className="inline-flex items-center p-0.5 rounded-full bg-[#F4F1EA] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] text-xs font-mono shadow-2xs">
+            <button
+              type="button"
+              onClick={() => setLanguage('en')}
+              className={`px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
+                language === 'en'
+                  ? 'bg-[#141312] dark:bg-[#FAF9F6] text-[#FAF9F6] dark:text-[#141312] shadow-xs'
+                  : 'text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0]'
+              }`}
+              aria-label="Switch to English"
+              title="English"
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage('ta')}
+              className={`px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
+                language === 'ta'
+                  ? 'bg-[#C25E3E] text-white shadow-xs font-bold'
+                  : 'text-[#646059] dark:text-[#A6A196] hover:text-[#141312] dark:hover:text-[#F7F5F0]'
+              }`}
+              aria-label="தமிழுக்கு மாறவும்"
+              title="தமிழ்"
+            >
+              தமிழ்
+            </button>
+          </div>
         </div>
 
         {/* Desktop Navigation */}
@@ -109,7 +141,7 @@ export default function Navbar() {
             onClick={(e) => handleLinkClick(e, '#contact')}
             className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
           >
-            <span>Start a Project</span>
+            <span>{t.nav.startProject}</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
@@ -134,6 +166,35 @@ export default function Navbar() {
             : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
       >
+        {/* Mobile Language Switcher */}
+        <div className="flex items-center justify-between pb-3 border-b border-[#E8E5DD]/60 dark:border-[#2E2C28]/60">
+          <span className="text-xs font-mono text-[#8F8B83] dark:text-[#7A756C] uppercase">Language / மொழி</span>
+          <div className="inline-flex items-center p-0.5 rounded-full bg-[#F4F1EA] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] text-xs font-mono">
+            <button
+              type="button"
+              onClick={() => setLanguage('en')}
+              className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+                language === 'en'
+                  ? 'bg-[#141312] dark:bg-[#FAF9F6] text-[#FAF9F6] dark:text-[#141312]'
+                  : 'text-[#646059] dark:text-[#A6A196]'
+              }`}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage('ta')}
+              className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+                language === 'ta'
+                  ? 'bg-[#C25E3E] text-white'
+                  : 'text-[#646059] dark:text-[#A6A196]'
+              }`}
+            >
+              தமிழ்
+            </button>
+          </div>
+        </div>
+
         <nav className="flex flex-col gap-4" aria-label="Mobile Navigation">
           {navLinks.map((link) => (
             <a
@@ -143,7 +204,7 @@ export default function Navbar() {
               className="text-lg font-medium text-[#141312] dark:text-[#F7F5F0] hover:text-[#C25E3E] py-2 border-b border-[#E8E5DD]/50 dark:border-[#2E2C28]/50 transition-colors flex items-center justify-between"
             >
               <span>{link.name}</span>
-              <span className="text-xs text-[#8F8B83] dark:text-[#7A756B] font-mono">0{navLinks.indexOf(link) + 1}</span>
+              <span className="text-xs text-[#8F8B83] dark:text-[#7A756C] font-mono">0{navLinks.indexOf(link) + 1}</span>
             </a>
           ))}
         </nav>
@@ -153,12 +214,12 @@ export default function Navbar() {
           onClick={(e) => handleLinkClick(e, '#contact')}
           className="inline-flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 text-center mt-2 shadow-md"
         >
-          <span>Start a Project</span>
+          <span>{t.nav.startProject}</span>
           <ArrowUpRight className="w-4 h-4" />
         </a>
 
-        <div className="pt-4 text-xs text-center text-[#8F8B83] dark:text-[#7A756B] border-t border-[#E8E5DD]/60 dark:border-[#2E2C28]/60">
-          Available for freelance projects • India
+        <div className="pt-4 text-xs text-center text-[#8F8B83] dark:text-[#7A756C] border-t border-[#E8E5DD]/60 dark:border-[#2E2C28]/60">
+          {t.nav.available}
         </div>
       </div>
     </header>
