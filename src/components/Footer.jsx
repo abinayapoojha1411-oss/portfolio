@@ -140,7 +140,7 @@ export default function Footer() {
         {/* Bottom Legal / Copyright Row */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8F8B83] dark:text-[#7A756C] gap-4">
           <p>© 2026 Webnest. All rights reserved.</p>
-          <p className="font-mono text-[11px]">Designed &amp; Developed with Clean React &amp; Tailwind CSS</p>
+
         </div>
 
       </div>

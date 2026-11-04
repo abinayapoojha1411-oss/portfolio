@@ -5,7 +5,7 @@ export default function Skills() {
   return (
     <section className="py-24 md:py-32 bg-[#FFFFFF] dark:bg-[#141312] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 mb-4">
@@ -61,10 +61,7 @@ export default function Skills() {
                 </div>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-[#E8E5DD]/60 dark:border-[#2E2C28]/60 flex items-center justify-between text-[11px] font-mono text-[#8F8B83] dark:text-[#7A756C]">
-                <span>Status</span>
-                <span className="text-emerald-700 dark:text-emerald-400 font-medium">Active In Production</span>
-              </div>
+
             </div>
           ))}
         </div>
