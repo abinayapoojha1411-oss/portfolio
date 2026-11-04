@@ -7,7 +7,6 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import About from './components/About';
 import WhyWorkWithMe from './components/WhyWorkWithMe';
-
 import Skills from './components/Skills';
 import Industries from './components/Industries';
 import PortfolioCallout from './components/PortfolioCallout';
@@ -41,9 +40,6 @@ export default function App() {
 
           {/* Why Work With Me */}
           <WhyWorkWithMe />
-
-          {/* 5-Step Process Timeline */}
-          <Process />
 
           {/* Tools I Work With - Grouped Skills */}
           <Skills />
