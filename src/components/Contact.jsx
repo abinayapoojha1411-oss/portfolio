@@ -61,21 +61,21 @@ export default function Contact() {
 
 
         {/* Central High-Impact Email Showcase Card */}
-        <div className="relative bg-[#FFFFFF] dark:bg-[#171614] rounded-3xl p-8 sm:p-12 md:p-14 border border-[#E8E5DD] dark:border-[#2E2C28] shadow-[0_20px_60px_-15px_rgba(20,19,18,0.06)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] mb-12 transition-all">
-
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 pb-10 border-b border-[#E8E5DD] dark:border-[#2E2C28]">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5">
-              <div className="w-16 h-16 rounded-2xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#C25E3E] shrink-0 shadow-inner">
-                <Mail className="w-8 h-8" />
+        <div className="relative bg-[#FFFFFF] dark:bg-[#171614] rounded-3xl p-6 sm:p-10 md:p-12 border border-[#E8E5DD] dark:border-[#2E2C28] shadow-[0_20px_60px_-15px_rgba(20,19,18,0.06)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] mb-12 transition-all">
+          
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pb-8 border-b border-[#E8E5DD] dark:border-[#2E2C28]">
+            <div className="flex items-center text-left gap-4 min-w-0 w-full lg:w-auto">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#C25E3E] shrink-0 shadow-inner">
+                <Mail className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
 
-              <div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8F8B83] dark:text-[#7A756C] block mb-1">
-                  Primary Direct Email
+              <div className="min-w-0">
+                <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#8F8B83] dark:text-[#7A756C] block mb-0.5">
+                  Direct Email
                 </span>
                 <a
                   href={`mailto:${email}?subject=New%20Project%20Enquiry%20%E2%80%94%20Webnest`}
-                  className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-[#141312] dark:text-[#F7F5F0] hover:text-[#C25E3E] dark:hover:text-[#C25E3E] transition-colors break-all"
+                  className="text-base sm:text-xl md:text-2xl font-mono font-semibold text-[#141312] dark:text-[#F7F5F0] hover:text-[#C25E3E] dark:hover:text-[#C25E3E] transition-colors whitespace-nowrap block"
                   title="Click to send an email"
                 >
                   {email}
@@ -84,32 +84,32 @@ export default function Contact() {
             </div>
 
             {/* Action Buttons: Copy & Compose */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full lg:w-auto shrink-0">
+            <div className="flex flex-row items-center gap-3 w-full sm:w-auto justify-start sm:justify-end shrink-0">
               <button
                 type="button"
                 onClick={handleCopy}
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#F4F1EA] dark:bg-[#1E1D1B] text-[#141312] dark:text-[#F7F5F0] hover:bg-[#E8E5DD] dark:hover:bg-[#2A2825] border border-[#E8E5DD] dark:border-[#2E2C28] transition-all duration-300 shadow-2xs hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#F4F1EA] dark:bg-[#1E1D1B] text-[#141312] dark:text-[#F7F5F0] hover:bg-[#E8E5DD] dark:hover:bg-[#2A2825] border border-[#E8E5DD] dark:border-[#2E2C28] transition-all duration-300 shadow-2xs hover:scale-[1.02] active:scale-[0.98] cursor-pointer shrink-0"
                 aria-label="Copy email address"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">Email Copied!</span>
+                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">Copied!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4 text-[#C25E3E]" />
-                    <span>Copy Email</span>
+                    <Copy className="w-3.5 h-3.5 text-[#C25E3E]" />
+                    <span>Copy</span>
                   </>
                 )}
               </button>
 
               <a
                 href={`mailto:${email}?subject=New%20Project%20Enquiry%20%E2%80%94%20Webnest`}
-                className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02]"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] shrink-0"
               >
                 <span>Send Email</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
           </div>
