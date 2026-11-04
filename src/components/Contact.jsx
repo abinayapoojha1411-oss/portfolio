@@ -1,431 +1,188 @@
 import React, { useState } from 'react';
-import {
-  Mail,
-  Send,
-  CheckCircle2,
-  AlertCircle,
-  Clock,
-  ArrowUpRight,
-  Loader2
-} from 'lucide-react';
+import { Mail, Copy, Check, ArrowUpRight, Clock, Sparkles } from 'lucide-react';
 import { LinkedInIcon, GitHubIcon } from './SocialIcons';
-import { GOOGLE_SHEET_SCRIPT_URL } from '../config/sheetConfig';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    business: '',
-    websiteType: 'Business Website',
-    details: ''
-  });
+  const [copied, setCopied] = useState(false);
 
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState('');
+  const email = 'webnest.web7@gmail.com';
 
-  const websiteTypes = [
-    'Business Website',
-    'Landing Page',
-    'Portfolio Website',
-    'E-commerce Website',
-    'Resume',
-    'Other'
+  const handleCopy = () => {
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    }
+  };
+
+  const projectPrompts = [
+    {
+      title: 'Project Overview',
+      desc: 'A quick summary of what you need (brand new website, redesign, or landing page).'
+    },
+    {
+      title: 'Timeline & Goals',
+      desc: 'Your desired launch timeline, key deliverables, and commercial objectives.'
+    },
+    {
+      title: 'Design References',
+      desc: 'Any websites, visual styles, or brands that inspire your aesthetic vision.'
+    }
   ];
 
-  const validate = () => {
-    const errs = {};
-    if (!formData.name.trim()) {
-      errs.name = 'Please provide your name';
-    }
-    if (!formData.email.trim()) {
-      errs.email = 'Please provide your email address';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errs.email = 'Please enter a valid email address';
-    }
-    if (!formData.business.trim()) {
-      errs.business = 'Please specify your business or brand name';
-    }
-    if (!formData.details.trim() || formData.details.trim().length < 10) {
-      errs.details = 'Please share at least a short sentence (15+ characters) about your goals';
-    }
-    return errs;
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: null }));
-    }
-    if (submitError) {
-      setSubmitError('');
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitError('');
-
-    try {
-      // 1. Direct delivery to abinayapoojha1411@gmail.com via FormSubmit AJAX API
-      const emailResponse = await fetch('https://formsubmit.co/ajax/webnest.web7@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          business: formData.business.trim() || 'Not specified',
-          websiteType: formData.websiteType,
-          message: formData.details.trim(),
-          _subject: `New Webnest Enquiry from ${formData.name.trim()}`,
-          _template: 'table',
-          _captcha: 'false'
-        })
-      });
-
-      if (!emailResponse.ok) {
-        throw new Error('Email service response was not ok');
-      }
-
-      // 2. Optional: also log to Google Sheet if configured
-      if (GOOGLE_SHEET_SCRIPT_URL) {
-        const payload = JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          business: formData.business.trim(),
-          websiteType: formData.websiteType,
-          details: formData.details.trim(),
-          timestamp: new Date().toISOString()
-        });
-
-        try {
-          await fetch(GOOGLE_SHEET_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-              'Content-Type': 'text/plain;charset=utf-8'
-            },
-            body: payload
-          });
-        } catch (sheetErr) {
-          console.warn('Google Sheet log skipped:', sheetErr);
-        }
-      }
-
-      setSubmitted(true);
-    } catch (err) {
-      console.error('Submission error:', err);
-      setSubmitError('Unable to send enquiry automatically right now. Please use the button below to send directly via email.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <section id="contact" className="py-24 md:py-36 bg-[#FAF9F6] dark:bg-[#0F0E0D] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <section
+      id="contact"
+      className="py-24 md:py-36 bg-[#FAF9F6] dark:bg-[#0F0E0D] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300 relative overflow-hidden"
+    >
+      {/* Subtle warm glow in background */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-[#C25E3E]/5 via-[#F4F1EA]/40 dark:via-[#1A1917]/40 to-transparent blur-3xl pointer-events-none -z-10" 
+        aria-hidden="true"
+      />
 
-          {/* Left Column (5 cols): Context & Direct Contact Options */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <div className="inline-flex items-center gap-2 mb-4">
-                <span className="w-2 h-2 rounded-full bg-[#C25E3E]" />
-                <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E]">
-                  GET IN TOUCH
-                </span>
-              </div>
-
-              <h2 className="text-4xl sm:5xl lg:text-6xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-[1.08] mb-6 transition-colors">
-                Have an idea?{' '}
-                <span className="font-serif italic font-normal text-[#C25E3E]">
-                  Let&apos;s build it.
-                </span>
-              </h2>
-
-              <p className="text-base sm:text-lg text-[#646059] dark:text-[#A6A196] leading-relaxed mb-8 font-light transition-colors">
-                Tell me what you need and I&apos;ll get back to you with the next steps.
-              </p>
-
-              {/* Direct Availability Note */}
-              <div className="bg-[#FFFFFF] dark:bg-[#171614] rounded-2xl p-6 border border-[#E8E5DD] dark:border-[#2E2C28] mb-8 shadow-sm transition-colors">
-                <div className="flex items-center gap-3 mb-2">
-                  <Clock className="w-4 h-4 text-[#C25E3E]" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0]">
-                    Response Time
-                  </span>
-                </div>
-                <p className="text-xs text-[#646059] dark:text-[#A6A196] leading-relaxed transition-colors">
-                  I typically respond to project inquiries within 24 business hours with initial questions or a calendar link for a brief discovery chat.
-                </p>
-              </div>
-
-              {/* Direct Channels */}
-              <div className="space-y-3">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8F8B83] dark:text-[#7A756C] block mb-2">
-                  Direct Email Channel
-                </span>
-
-                {/* Email Option */}
-                <a
-                  href="mailto:webnest.web7@gmail.com"
-                  className="group flex items-center justify-between p-4 rounded-xl bg-[#FFFFFF] dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#C25E3E] dark:hover:border-[#C25E3E] transition-all duration-300 shadow-2xs hover:shadow-sm"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#141312] dark:text-[#F7F5F0] group-hover:bg-[#C25E3E] group-hover:text-white transition-colors">
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-[#141312] dark:text-[#F7F5F0]">Direct Email</div>
-                      <div className="text-xs text-[#646059] dark:text-[#A6A196]">webnest.web7@gmail.com</div>
-                    </div>
-                  </div>
-                  <ArrowUpRight className="w-4 h-4 text-[#8F8B83] dark:text-[#7A756C] group-hover:text-[#C25E3E] transition-colors" />
-                </a>
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="pt-8 mt-8 border-t border-[#E8E5DD] dark:border-[#2E2C28]">
-              <span className="text-xs font-mono uppercase tracking-wider text-[#8F8B83] dark:text-[#7A756C] block mb-3">
-                Professional Profiles
-              </span>
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://linkedin.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#141312] dark:hover:border-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-white dark:hover:text-[#141312] flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
-                  aria-label="LinkedIn Profile"
-                >
-                  <LinkedInIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://github.com/abinayapoojha1411-oss"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#141312] dark:hover:border-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-white dark:hover:text-[#141312] flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all duration-300"
-                  aria-label="GitHub Profile"
-                >
-                  <GitHubIcon className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 md:px-12">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F1EA] dark:bg-[#1A1917] border border-[#E8E5DD] dark:border-[#2E2C28] text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E] mb-6 transition-colors">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C25E3E]" />
+            <span>START A CONVERSATION</span>
           </div>
 
-          {/* Right Column (7 cols): The Contact Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-[#FFFFFF] dark:bg-[#171614] rounded-3xl p-8 sm:p-10 lg:p-12 border border-[#E8E5DD] dark:border-[#2E2C28] shadow-sm transition-colors">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-[1.08] mb-6 transition-colors">
+            Have an idea?{' '}
+            <span className="font-serif italic font-normal text-[#C25E3E] block sm:inline">
+              Let&apos;s build it together.
+            </span>
+          </h2>
 
-              {submitted ? (
-                <div className="py-12 text-center animate-fadeIn">
-                  <div className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-6 border border-emerald-200 dark:border-emerald-800">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#141312] dark:text-[#F7F5F0] mb-3 tracking-tight">
-                    Enquiry Submitted Successfully!
-                  </h3>
-                  <p className="text-sm text-[#646059] dark:text-[#A6A196] max-w-md mx-auto mb-6 leading-relaxed font-light">
-                    Thank you, <strong className="text-[#141312] dark:text-[#F7F5F0]">{formData.name}</strong>! Your message has been received. I will review your requirements and respond within 24 business hours.
-                  </p>
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSubmitted(false);
-                        setFormData({
-                          name: '',
-                          email: '',
-                          business: '',
-                          websiteType: 'Business Website',
-                          details: ''
-                        });
-                      }}
-                      className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-white dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-colors"
-                    >
-                      Send Another Enquiry
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} noValidate className="space-y-6">
-
-                  {/* Name and Email Row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] mb-2">
-                        Your Name <span className="text-[#C25E3E]">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="e.g. Priya Sharma"
-                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.name ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
-                          }`}
-                      />
-                      {errors.name && (
-                        <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
-                          <AlertCircle className="w-3 h-3" /> {errors.name}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] mb-2">
-                        Email Address <span className="text-[#C25E3E]">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="priya@company.com"
-                        className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.email ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
-                          }`}
-                      />
-                      {errors.email && (
-                        <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
-                          <AlertCircle className="w-3 h-3" /> {errors.email}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Business / Brand Name */}
-                  <div>
-                    <label htmlFor="business" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] mb-2">
-                      Business / Brand Name <span className="text-[#C25E3E]">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="business"
-                      name="business"
-                      value={formData.business}
-                      onChange={handleChange}
-                      placeholder="e.g. Studio Vista Architecture"
-                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.business ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
-                        }`}
-                    />
-                    {errors.business && (
-                      <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
-                        <AlertCircle className="w-3 h-3" /> {errors.business}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Website Type Selector */}
-                  <div>
-                    <label htmlFor="websiteType" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] mb-2">
-                      Website Type
-                    </label>
-                    <select
-                      id="websiteType"
-                      name="websiteType"
-                      value={formData.websiteType}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] text-sm text-[#141312] dark:text-[#F7F5F0] focus:outline-none focus:border-[#C25E3E] focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors"
-                    >
-                      {websiteTypes.map((type) => (
-                        <option key={type} value={type} className="bg-white dark:bg-[#1E1D1B] text-[#141312] dark:text-[#F7F5F0]">
-                          {type}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Project Details */}
-                  <div>
-                    <label htmlFor="details" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#141312] dark:text-[#F7F5F0] mb-2">
-                      Project Details <span className="text-[#C25E3E]">*</span>
-                    </label>
-                    <textarea
-                      id="details"
-                      name="details"
-                      rows={4}
-                      value={formData.details}
-                      onChange={handleChange}
-                      placeholder="Tell me briefly about what you are looking to build, any inspirations, or target completion dates..."
-                      className={`w-full px-4 py-3 rounded-xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border text-sm text-[#141312] dark:text-[#F7F5F0] placeholder-[#8F8B83] dark:placeholder-[#7A756C] focus:outline-none focus:ring-2 focus:ring-[#C25E3E]/40 transition-colors ${errors.details ? 'border-red-400 bg-red-50/20' : 'border-[#E8E5DD] dark:border-[#2E2C28] focus:border-[#C25E3E]'
-                        }`}
-                    />
-                    {errors.details && (
-                      <p className="text-xs text-red-500 mt-1 flex items-center gap-1 font-medium">
-                        <AlertCircle className="w-3 h-3" /> {errors.details}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Submit Error Fallback Alert */}
-                  {submitError && (
-                    <div className="p-4 rounded-2xl bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-[#141312] dark:text-[#F7F5F0] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                      <div>
-                        <div className="font-semibold text-amber-800 dark:text-amber-200 flex items-center gap-1.5 mb-0.5">
-                          <AlertCircle className="w-3.5 h-3.5" />
-                          <span>Direct Email Option</span>
-                        </div>
-                        <p className="text-[#646059] dark:text-[#A6A196]">{submitError}</p>
-                      </div>
-                      <a
-                        href={`mailto:webnest.web7@gmail.com?subject=${encodeURIComponent(
-                          `New Project Enquiry from ${formData.name || 'Client'} (${formData.business || 'Business'})`
-                        )}&body=${encodeURIComponent(
-                          `Name: ${formData.name}\nEmail: ${formData.email}\nBusiness: ${formData.business}\nWebsite Type: ${formData.websiteType}\n\nProject Details:\n${formData.details}`
-                        )}`}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#C25E3E] text-white font-medium hover:bg-[#a94f33] transition-colors shrink-0 text-xs shadow-2xs"
-                      >
-                        <Mail className="w-3.5 h-3.5" />
-                        <span>Send via Email Client</span>
-                      </a>
-                    </div>
-                  )}
-
-                  {/* Submit Button */}
-                  <div>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="group w-full py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? (
-                        <div className="flex items-center justify-center gap-2">
-                          <Loader2 className="w-4 h-4 animate-spin text-[#C25E3E]" />
-                          <span>Submitting...</span>
-                        </div>
-                      ) : (
-                        <>
-                          <span>Send Project Enquiry</span>
-                          <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </>
-                      )}
-                    </button>
-                    <p className="text-[11px] text-center text-[#8F8B83] dark:text-[#7A756C] mt-3 font-light">
-                      No spam. Your project details remain strictly confidential.
-                    </p>
-                  </div>
-
-                </form>
-              )}
-
-            </div>
-          </div>
-
+          <p className="text-base sm:text-lg md:text-xl text-[#646059] dark:text-[#A6A196] leading-relaxed max-w-2xl mx-auto font-light transition-colors">
+            Skip the forms. Drop your project thoughts directly to my inbox and I will get back to you with ideas, estimates, and next steps.
+          </p>
         </div>
+
+        {/* Central High-Impact Email Showcase Card */}
+        <div className="relative bg-[#FFFFFF] dark:bg-[#171614] rounded-3xl p-8 sm:p-12 md:p-14 border border-[#E8E5DD] dark:border-[#2E2C28] shadow-[0_20px_60px_-15px_rgba(20,19,18,0.06)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] mb-12 transition-all">
+          
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 pb-10 border-b border-[#E8E5DD] dark:border-[#2E2C28]">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5">
+              <div className="w-16 h-16 rounded-2xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#C25E3E] shrink-0 shadow-inner">
+                <Mail className="w-8 h-8" />
+              </div>
+
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8F8B83] dark:text-[#7A756C] block mb-1">
+                  Primary Direct Email
+                </span>
+                <a
+                  href={`mailto:${email}?subject=New%20Project%20Enquiry%20%E2%80%94%20Webnest`}
+                  className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-[#141312] dark:text-[#F7F5F0] hover:text-[#C25E3E] dark:hover:text-[#C25E3E] transition-colors break-all"
+                  title="Click to send an email"
+                >
+                  {email}
+                </a>
+              </div>
+            </div>
+
+            {/* Action Buttons: Copy & Compose */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full lg:w-auto shrink-0">
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#F4F1EA] dark:bg-[#1E1D1B] text-[#141312] dark:text-[#F7F5F0] hover:bg-[#E8E5DD] dark:hover:bg-[#2A2825] border border-[#E8E5DD] dark:border-[#2E2C28] transition-all duration-300 shadow-2xs hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                aria-label="Copy email address"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">Email Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 text-[#C25E3E]" />
+                    <span>Copy Email</span>
+                  </>
+                )}
+              </button>
+
+              <a
+                href={`mailto:${email}?subject=New%20Project%20Enquiry%20%E2%80%94%20Webnest`}
+                className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#141312] dark:bg-[#F7F5F0] text-[#FAF9F6] dark:text-[#141312] hover:bg-[#C25E3E] dark:hover:bg-[#C25E3E] dark:hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02]"
+              >
+                <span>Send Email</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Availability & Response Indicators */}
+          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#646059] dark:text-[#A6A196]">
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="beacon-dot absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600" />
+              </span>
+              <span className="font-medium text-[#141312] dark:text-[#F7F5F0]">
+                Available for freelance projects &amp; consultations
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 text-[#8F8B83] dark:text-[#7A756C]">
+              <Clock className="w-4 h-4 text-[#C25E3E]" />
+              <span>Direct response within 24 business hours</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Helpful Tips: What to include in your message */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {projectPrompts.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-[#FFFFFF]/70 dark:bg-[#171614]/70 rounded-2xl p-6 border border-[#E8E5DD] dark:border-[#2E2C28] transition-colors"
+            >
+              <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#C25E3E] mb-2">
+                0{idx + 1} • {item.title}
+              </div>
+              <p className="text-xs sm:text-sm text-[#646059] dark:text-[#A6A196] leading-relaxed font-light">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Social / Profiles */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-[#E8E5DD] dark:border-[#2E2C28] text-xs text-[#8F8B83] dark:text-[#7A756C]">
+          <div className="flex items-center gap-3">
+            <span className="font-mono uppercase tracking-wider">Also find me on:</span>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#141312] dark:hover:border-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-white dark:hover:text-[#141312] flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedInIcon className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://github.com/abinayapoojha1411-oss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#141312] dark:hover:border-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-white dark:hover:text-[#141312] flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all"
+                aria-label="GitHub Profile"
+              >
+                <GitHubIcon className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          <div className="font-mono text-[11px]">
+            Based in India • Working with clients worldwide
+          </div>
+        </div>
+
       </div>
     </section>
   );

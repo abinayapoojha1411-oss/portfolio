@@ -34,10 +34,11 @@ A production-quality, editorial creative-agency style freelance portfolio websit
 9. **Tools I Work With (`Skills.jsx`)**: Minimal grouped pills for Frontend, Backend, Database, and Tools.
 10. **Industries (`Industries.jsx`)**: 8 sectors tailored for small businesses and creators.
 11. **Portfolio Expansion (`PortfolioCallout.jsx`)**: Invitation to collaborate on real projects (no fake testimonials).
-12. **Project Enquiry Contact (`Contact.jsx`)**:
-    - Comprehensive form with name, email, business, website type, budget dropdowns, and message details.
-    - Form submissions automatically recorded to Google Sheet.
-    - Direct communication channels: Email, LinkedIn, GitHub.
+12. **Direct Contact Showcase (`Contact.jsx`)**:
+    - Prominently highlights direct email contact: `webnest.web7@gmail.com`.
+    - One-click "Copy Email" and "Send Email" actions.
+    - Project briefing prompts (Overview, Timeline, Design references).
+    - Direct professional channels: Email, LinkedIn, GitHub.
 13. **Final Dramatic CTA (`FinalCta.jsx`)**: High-impact editorial call to action.
 14. **Footer (`Footer.jsx`)**: Complete footer with navigation, copyright, and smooth "Back to top" button.
 
@@ -61,29 +62,12 @@ npm run preview
 
 ---
 
-## ✦ Connecting a Backend or Form Handler
+## ✦ Direct Client Inquiries
 
-In [`src/components/Contact.jsx`](file:///c:/Users/Lenovo/Documents/portfolio/src/components/Contact.jsx), the `handleSubmit` handler is structured for quick plug-and-play integration:
-
-### Option A: Formspree
-1. Create a free form at [formspree.io](https://formspree.io)
-2. Replace the simulated timeout with:
-   ```javascript
-   await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-     method: "POST",
-     headers: { "Content-Type": "application/json" },
-     body: JSON.stringify(formData)
-   });
-   ```
-
-### Option B: EmailJS
-1. Sign up at [emailjs.com](https://www.emailjs.com)
-2. Run `npm install @emailjs/browser`
-3. Call `emailjs.send("SERVICE_ID", "TEMPLATE_ID", formData, "PUBLIC_KEY")`
-
-### Option C: Web3Forms
-1. Get an access key at [web3forms.com](https://web3forms.com)
-2. Send formData with `access_key` in the request body.
+Clients contact directly via **webnest.web7@gmail.com**:
+- **One-click Copy Email**: Copies address directly to the user's clipboard.
+- **One-click Send Email**: Opens client's default email app with pre-filled subject line.
+- **Guaranteed response**: Highlighted 24 business hours response expectation.
 
 ---
 
