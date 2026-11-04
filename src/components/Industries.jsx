@@ -72,10 +72,7 @@ export default function Industries() {
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-[#F4F1EA] dark:border-[#252420] flex items-center justify-between text-[11px] text-[#8F8B83] dark:text-[#7A756C] group-hover:text-[#141312] dark:group-hover:text-[#F7F5F0] transition-colors">
-                  <span>Custom Solution</span>
 
-                </div>
               </div>
             );
           })}
