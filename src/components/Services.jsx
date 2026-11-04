@@ -1,22 +1,18 @@
 import React from 'react';
 import { 
   Building2, 
-  Layers, 
-  Sparkles, 
-  Briefcase, 
+  FileText, 
   RefreshCw, 
-  Code2, 
+  Sparkles, 
   ArrowUpRight 
 } from 'lucide-react';
 import { services } from '../data/servicesData';
 
 const iconMap = {
   Building2,
-  Layers,
-  Sparkles,
-  Briefcase,
+  FileText,
   RefreshCw,
-  Code2
+  Sparkles
 };
 
 export default function Services() {
@@ -44,20 +40,20 @@ export default function Services() {
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="w-2 h-2 rounded-full bg-[#C25E3E]" />
               <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#C25E3E]">
-                WHAT I DO
+                CORE SERVICES
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141312] dark:text-[#F7F5F0] leading-tight transition-colors">
-              Websites built around your business.
+              Tailored digital solutions.
             </h2>
           </div>
           <p className="text-base sm:text-lg text-[#646059] dark:text-[#A6A196] max-w-md font-light transition-colors">
-            Every deliverable is crafted from scratch to elevate your market standing and drive tangible client inquiries.
+            From bespoke websites to professional resume design, every deliverable is crafted to make you and your brand stand out.
           </p>
         </div>
 
-        {/* 6 Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* 4 Core Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {services.map((service) => {
             const IconComponent = iconMap[service.iconName] || Briefcase;
 

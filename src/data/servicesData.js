@@ -1,80 +1,54 @@
 export const services = [
   {
     number: '01',
-    title: 'Business Websites',
+    title: 'Custom Web Design & Development',
     description:
-      'Professional websites that establish credibility and help businesses generate enquiries.',
+      'High-impact, responsive websites and landing pages engineered to establish trust and turn visitors into enquiries.',
     features: [
-      'Multi-page architecture',
-      'Clean brand presentation',
-      'Contact & enquiry integration',
-      'Optimized for search engines'
+      'Multi-page & single-page architectures',
+      'Mobile-first responsive design',
+      'Clean brand aesthetic & typography',
+      'SEO-friendly, fast-loading React code'
     ],
     iconName: 'Building2'
   },
   {
     number: '02',
-    title: 'Landing Pages',
+    title: 'Professional Resume Building',
     description:
-      'Focused landing pages designed for products, services, campaigns and lead generation.',
+      'Standout, ATS-compliant resumes, executive CV design, and modern digital portfolios tailored for career growth.',
     features: [
-      'High-converting structure',
-      'Frictionless call-to-actions',
-      'Fast-loading performance',
-      'Campaign & ad alignment'
+      'ATS-friendly formatting & keywords',
+      'Executive layout & typography rhythm',
+      'Print-ready PDF & digital formats',
+      'Tailored for your target industry & role'
     ],
-    iconName: 'Layers'
+    iconName: 'FileText'
   },
   {
     number: '03',
-    title: 'Personal Brand Websites',
+    title: 'Website Redesign & Modernization',
     description:
-      'Modern websites for photographers, creators, consultants, coaches and professionals.',
+      'Transform slow, outdated, or template-bloated websites into modern, sleek, and high-converting digital experiences.',
     features: [
-      'Editorial portfolio showcases',
-      'Client booking pathways',
-      'Storytelling-led layout',
-      'Media & content presentation'
-    ],
-    iconName: 'Sparkles'
-  },
-  {
-    number: '04',
-    title: 'Service-Based Websites',
-    description:
-      'Websites for fitness studios, wedding planners, interior designers, hospitality businesses and similar services.',
-    features: [
-      'Service catalog & packages',
-      'Consultation appointment flows',
-      'Visual project showcases',
-      'Local discovery optimization'
-    ],
-    iconName: 'Briefcase'
-  },
-  {
-    number: '05',
-    title: 'Website Redesign',
-    description:
-      'Transform outdated websites into modern, responsive and user-friendly experiences.',
-    features: [
-      'Complete aesthetic refresh',
-      'Mobile-first overhaul',
-      'Simplified navigation & UX',
-      'Modern tech stack migration'
+      'Complete visual & UX refresh',
+      'Speed & Core Web Vitals overhaul',
+      'Simplified navigation & user paths',
+      'Zero bloated page builders'
     ],
     iconName: 'RefreshCw'
   },
   {
-    number: '06',
-    title: 'Custom Web Experiences',
+    number: '04',
+    title: 'UI/UX Design & Optimization',
     description:
-      'Interactive websites and custom web applications based on specific business requirements.',
+      'User-centered interface design, conversion wireframes, and performance tuning that elevate your digital brand.',
     features: [
-      'Interactive tools & calculators',
-      'Custom filtering & catalogs',
-      'Dynamic components & API links',
-      'Tailored functionality'
+      'Intuitive user journeys & hierarchy',
+      'Wireframing & interactive prototypes',
+      'Conversion-focused call to actions',
+      'Cross-browser & cross-device testing'
     ],
-    iconName: 'Code2'
+    iconName: 'Sparkles'
   }
 ];
