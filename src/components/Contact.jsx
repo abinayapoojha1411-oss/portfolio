@@ -62,7 +62,7 @@ export default function Contact() {
 
         {/* Central High-Impact Email Showcase Card */}
         <div className="relative bg-[#FFFFFF] dark:bg-[#171614] rounded-3xl p-6 sm:p-10 md:p-12 border border-[#E8E5DD] dark:border-[#2E2C28] shadow-[0_20px_60px_-15px_rgba(20,19,18,0.06)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] mb-12 transition-all">
-          
+
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pb-8 border-b border-[#E8E5DD] dark:border-[#2E2C28]">
             <div className="flex items-center text-left gap-4 min-w-0 w-full lg:w-auto">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FAF9F6] dark:bg-[#1E1D1B] border border-[#E8E5DD] dark:border-[#2E2C28] flex items-center justify-center text-[#C25E3E] shrink-0 shadow-inner">
@@ -156,7 +156,7 @@ export default function Contact() {
             <span className="font-mono uppercase tracking-wider">Also find me on:</span>
             <div className="flex items-center gap-2">
               <a
-                href="https://linkedin.com/"
+                href="https://www.linkedin.com/in/abinaya-saravanan-s"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-lg bg-white dark:bg-[#171614] border border-[#E8E5DD] dark:border-[#2E2C28] hover:border-[#141312] dark:hover:border-[#F7F5F0] hover:bg-[#141312] dark:hover:bg-[#F7F5F0] hover:text-white dark:hover:text-[#141312] flex items-center justify-center text-[#646059] dark:text-[#A6A196] transition-all"
