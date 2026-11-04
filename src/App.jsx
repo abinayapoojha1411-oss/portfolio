@@ -7,7 +7,7 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import About from './components/About';
 import WhyWorkWithMe from './components/WhyWorkWithMe';
-import Process from './components/Process';
+
 import Skills from './components/Skills';
 import Industries from './components/Industries';
 import PortfolioCallout from './components/PortfolioCallout';
