@@ -1,13 +1,13 @@
 import React from 'react';
-import { 
-  Compass, 
-  Palmtree, 
-  Camera, 
-  Sparkles, 
-  Activity, 
-  UserCheck, 
-  ShieldCheck, 
-  Rocket 
+import {
+  Compass,
+  Palmtree,
+  Camera,
+  Sparkles,
+  Activity,
+  UserCheck,
+  ShieldCheck,
+  Rocket
 } from 'lucide-react';
 import { industries } from '../data/industriesData';
 
@@ -26,7 +26,7 @@ export default function Industries() {
   return (
     <section className="py-24 md:py-32 bg-[#FAF9F6] dark:bg-[#0F0E0D] border-b border-[#E8E5DD] dark:border-[#2E2C28] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 mb-4">
@@ -74,7 +74,7 @@ export default function Industries() {
 
                 <div className="pt-4 mt-4 border-t border-[#F4F1EA] dark:border-[#252420] flex items-center justify-between text-[11px] text-[#8F8B83] dark:text-[#7A756C] group-hover:text-[#141312] dark:group-hover:text-[#F7F5F0] transition-colors">
                   <span>Custom Solution</span>
-                  <span>→</span>
+
                 </div>
               </div>
             );
