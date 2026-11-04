@@ -126,10 +126,7 @@ export default function Contact() {
               </span>
             </div>
 
-            <div className="flex items-center gap-2 text-[#8F8B83] dark:text-[#7A756C]">
-              <Clock className="w-4 h-4 text-[#C25E3E]" />
 
-            </div>
           </div>
         </div>
 
